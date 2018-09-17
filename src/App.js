@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+import MapBoxTest from "./components/MapBoxTest"
 
 class App extends Component {
   render() {
-    return (<div id="map"></div>);
+    return (
+    <MapBoxTest/>
+  );
   }
 }
+export default App;
 
+/*
 const script = document.createElement('script');
 script.src = process.env.PUBLIC_URL + "/sdk/tomtom.min.js";
 script.async = false;
@@ -21,4 +26,4 @@ script.onload = function() {
 }
 document.body.appendChild(script);
 
-export default App;
+export default App;*/
