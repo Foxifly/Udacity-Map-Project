@@ -4,18 +4,22 @@ import './App.css';
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return (<div id="map"></div>);
   }
 }
+
+const script = document.createElement('script');
+script.src = process.env.PUBLIC_URL + "/sdk/tomtom.min.js";
+script.async = false;
+script.onload = function() {
+  window.tomtom.L.map('map', {
+    source: 'vector',
+    key: 'lMerssbNuIOhMi8kW7lNXvphKl3Yiixe',
+    center: [37.769167, -122.478468],
+    basePath: '/sdk',
+    zoom: 15
+  });
+}
+document.body.appendChild(script);
 
 export default App;
