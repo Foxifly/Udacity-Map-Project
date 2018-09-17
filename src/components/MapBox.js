@@ -13,8 +13,8 @@ class MapBox extends Component {
       zoom={[8]}
       style="mapbox://styles/mapbox/streets-v9"
       containerStyle={{
-        height: "50vh",
-        width: "50vw"
+        height: "500px",
+        width: "500px"
       }}>
         <Layer
           type="symbol"
