@@ -5,16 +5,24 @@ import * as YelpAPI from "./util/YelpAPI.js";
 
 class App extends Component {
   state = {
-    allShelters: [],
+    horseBoarding: [],
+    horseRiding: [],
+    horseEquipment: [],
+    horseRacing: [],
+    farrier: [],
+    petPhotography: [],
+
     latitude:0,
     longitude: 0
     }
+
+    //To stop too many YELP requests, we will only load horse riding when a user first visits the site.
   componentDidMount() {
-    YelpAPI.search("animal shelter", '37.739651', '-121.425224').then((shelters) => {
-      console.log(shelters);
-      this.setState({allShelters: shelters})
+    YelpAPI.search("horse_riding" ,"horseriding", '37.739651', '-121.425224').then((riding) => {
+      console.log(riding);
+      this.setState({horseRiding: riding})
     }).then(()=> {
-      console.log("state"  + this.state.allShelters);
+      console.log("state"  + this.state.horseRiding);
     });
 
   }
@@ -22,7 +30,7 @@ class App extends Component {
   render() {
     return (
     <MapBox
-    allShelters={this.state.allShelters}
+    horseRiding={this.state.horseRiding}
     latitude={this.state.latitude}
     longitude={this.state.longitudes}
     />
@@ -30,20 +38,3 @@ class App extends Component {
   }
 }
 export default App;
-
-/*
-const script = document.createElement('script');
-script.src = process.env.PUBLIC_URL + "/sdk/tomtom.min.js";
-script.async = false;
-script.onload = function() {
-  window.tomtom.L.map('map', {
-    source: 'vector',
-    key: 'lMerssbNuIOhMi8kW7lNXvphKl3Yiixe',
-    center: [37.769167, -122.478468],
-    basePath: '/sdk',
-    zoom: 14
-  });
-}
-document.body.appendChild(script);
-
-export default App;*/

@@ -8,11 +8,10 @@ const headers = {
 //Yelp API search
 //GET https://api.yelp.com/v3/businesses/search
 
-export const search = (term, latitude, longitude) => {
-      return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}&categories=petadoption`, { headers } )
+export const search = (term, category, latitude, longitude) => {
+      return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}&categories=${category}&sort_by=best_match`, { headers } )
       .then(response => {
         return response.json();
-
       })
       .then(jsonResponse => {
         if (jsonResponse.businesses) {
@@ -20,5 +19,7 @@ export const search = (term, latitude, longitude) => {
             return business;
           });
         }
+      }).catch((err)=> {
+        console.log(err);
       });
     }
