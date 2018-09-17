@@ -21,7 +21,11 @@ class App extends Component {
 
   render() {
     return (
-    <MapBox/>
+    <MapBox
+    allShelters={this.state.allShelters}
+    latitude={this.state.latitude}
+    longitude={this.state.longitudes}
+    />
   );
   }
 }
