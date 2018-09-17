@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -17,7 +16,7 @@ script.onload = function() {
     key: 'lMerssbNuIOhMi8kW7lNXvphKl3Yiixe',
     center: [37.769167, -122.478468],
     basePath: '/sdk',
-    zoom: 15
+    zoom: 14
   });
 }
 document.body.appendChild(script);

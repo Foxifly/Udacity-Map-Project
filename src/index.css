@@ -4,8 +4,12 @@ body {
   width: 100%;
   height: 100%;
 }
-‌
 #map {
-  width: 100vw;
-  height: 100vh;
+  width: 100vw!important;
+  height: 100vh!important;
+}
+
+.leaflet-container {
+ width: 100vw;
+ height: 100vh;
 }
