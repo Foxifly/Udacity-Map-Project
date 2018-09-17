@@ -4,11 +4,13 @@ import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 const Map = ReactMapboxGl({
   accessToken: "pk.eyJ1IjoiZm94aWZseSIsImEiOiJjamx1YWtkamEwaWNiM3BwZW9qZTJmOG9oIn0.U__Nwr8mBBQkYg3BUlH1xQ"
 });
-class MapBoxTest extends Component {
+class MapBox extends Component {
 
   render () {
   return (
     <Map
+      center={[-121.425224, 37.739651]}
+      zoom={[8]}
       style="mapbox://styles/mapbox/streets-v9"
       containerStyle={{
         height: "50vh",
@@ -18,7 +20,7 @@ class MapBoxTest extends Component {
           type="symbol"
           id="marker"
           layout={{ "icon-image": "marker-15" }}>
-          <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
+          <Feature coordinates={[-121.425224, 37.739651]}/>
         </Layer>
     </Map>
   )
@@ -27,4 +29,4 @@ class MapBoxTest extends Component {
 
 }
 
-export default MapBoxTest;
+export default MapBox;

@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
-import MapBoxTest from "./components/MapBoxTest"
+import MapBox from "./components/MapBox"
+import * as YelpAPI from "./util/YelpAPI.js";
 
 class App extends Component {
+  state = {
+    allShelters: [],
+    latitude:0,
+    longitude: 0
+    }
+  componentDidMount() {
+    YelpAPI.search("animal shelter", '37.739651', '-121.425224').then((shelters) => {
+      console.log(shelters);
+      this.setState({allShelters: shelters})
+    }).then(()=> {
+      console.log("state"  + this.state.allShelters);
+    });
+
+  }
+
   render() {
     return (
-    <MapBoxTest/>
+    <MapBox/>
   );
   }
 }
