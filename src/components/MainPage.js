@@ -15,12 +15,12 @@ class MainPage extends Component {
   return (
     <div class="app">
     <MainHeading/>
+    <Search/>
     <MapBox
     horseRiding={horseRiding}
     latitude={latitude}
     longitude={longitude}
     />
-    <Search/>
     </div>
   )
 
