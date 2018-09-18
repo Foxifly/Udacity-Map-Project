@@ -7,8 +7,8 @@ body {
 
 
 .mapboxgl-map{
- width: 90vw;
- height: 90vh;
+ width: 100vw;
+ height: 600px;
 }
 
 
@@ -49,7 +49,58 @@ h2 {
 }
 
 .search-container {
-  background-color: blue;
+  display: flex;
+  flex-wrap:wrap;
+  position: relative;
+  background-color: #800E13;
   width: 100%;
-  height:100px;
+  padding: 15px 0;
+  justify-content: center;
+}
+
+.search-wrapper {
+    width: 40%;
+}
+.filter-wrapper {
+  width: 10%;
+}
+
+.search-container input {
+  width: 100%;
+  margin-left: 0px;
+  font-size: 18px;
+  font-family:'Source Sans Pro', sans-serif;
+  text-indent: 30px;
+  padding: 5px 0;
+  height: 25px;
+  background: white url('icons/search-icon.png') left no-repeat ;
+  background-size: 25px 25px;
+}
+.search-button,
+select {
+
+  font: bold 18px 'Unica One', cursive;
+  border: 1px solid white;
+  border-radius: 2px;
+  margin-left: 10px;
+  padding: 0px 10px;
+  height: 100%;
+  text-transform: uppercase;
+  color: white;
+  background-color: #AD2831;
+  width: 100px;
+  transition: ease 0.3s;
+}
+
+option {
+  background-color: blue;
+}
+select {
+  width: 200px;
+}
+
+.search-button:hover,
+.filter-button:hover {
+  cursor: pointer;
+  background-color: #b35c5e;
 }

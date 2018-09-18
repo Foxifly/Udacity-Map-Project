@@ -13,7 +13,7 @@ class MainPage extends Component {
   render () {
       const { latitude, longitude, horseRiding} = this.props;
   return (
-    <div class="app">
+    <div className="app">
     <MainHeading/>
     <Search/>
     <MapBox
