@@ -24,3 +24,26 @@ body {
   transform: rotate(45deg);
   border: 1px solid #FFFFFF;
 }
+
+.main-header {
+  background-color: #640D14;
+  padding: 10px 0;
+}
+h1, h2 {
+  font-family: 'Unica One', cursive;
+  color: white;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+
+}
+h1 {
+    letter-spacing: 2px;
+  font-weight: bold;
+font-size: 40px;
+}
+
+h2 {
+  font-size: 20px;
+  padding: 0;
+}

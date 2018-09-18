@@ -12,13 +12,12 @@ class MapBox extends Component {
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
   };*/
-
   render () {
     const { latitude, longitude, horseRiding} = this.props;
   return (
     <Map
-      center={[-121.425224, 37.739651]}
-      zoom={[12]}
+      center={[longitude, latitude]}
+      zoom={[10]}
       style={mapboxStyle}
       >
 

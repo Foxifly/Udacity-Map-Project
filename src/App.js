@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import MapBox from "./components/MapBox"
+import MainPage from "./components/MainPage"
 import * as YelpAPI from "./util/YelpAPI.js";
 import { Route } from "react-router-dom";
 
@@ -13,14 +13,23 @@ class App extends Component {
     farrier: [],
     petPhotography: [],
     vet: [],
-    latitude:0,
-    longitude: 0
+    latitude: 37.7749,
+    longitude: -122.4194
     }
+  componentWillMount() {
+      this.locateUser();
 
+    }
   //To stop too many YELP requests, we will only load horse riding when a user first visits the site.
-  componentDidMount() {
-    YelpAPI.search("horse_riding" ,"horseriding", '37.739651', '-121.425224', "best_match").then((horseRiding) => {
-      this.setState({horseRiding})
+  locateUser() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude
+      });
+      YelpAPI.search("horse_riding" ,"horseriding", this.state.latitude, this.state.longitude, "best_match").then((horseRiding) => {
+        this.setState({horseRiding})
+      });
     });
   }
 
@@ -76,10 +85,10 @@ class App extends Component {
                 {this.state.horseRiding && (
                   <div>
                     {
-                      <MapBox
+                      <MainPage
                       horseRiding={this.state.horseRiding}
                       latitude={this.state.latitude}
-                      longitude={this.state.longitudes}
+                      longitude={this.state.longitude}
                       />
                     }
                   </div>
