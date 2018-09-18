@@ -11,20 +11,28 @@ class Business extends Component {
   render () {
     const {business} = this.props;
   return (
-    <div className="business">
+    <li className="business">
     {console.log(business)}
     <h3> {business.name}</h3>
-    <img src={business.image_url}/>
-    <p>{business.display_phone}</p>
+    <div
+      className="bus-image-container"
+      style={{
+        width: 200,
+        height: 200,
+        backgroundImage: `url(${business.image_url})`,
+        backgroundSize: 'cover'
+      }}
+    />
+    <div className="business-info">
     <p>{business.location.address1}</p>
     <p>{business.location.address2}</p>
     <p>{business.location.address3}</p>
-    <p>{business.location.city}</p>
-    <p>{business.location.zip_code}</p>
-
-
-
+    <p>{business.location.city}, {business.location.state} {business.location.zip_code}</p>
     </div>
+    <div class="button-container">
+    <button class="more-info">More Info</button>
+    </div>
+    </li>
 
   )
 
