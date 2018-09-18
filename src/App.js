@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 
 class App extends Component {
   state = {
+    results: [],
     horseBoarding: [],
     horseRiding: [],
     horseEquipment: [],
@@ -27,8 +28,8 @@ class App extends Component {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
       });
-      YelpAPI.search("horse_riding" ,"horseriding", this.state.latitude, this.state.longitude, "best_match").then((horseRiding) => {
-        this.setState({horseRiding})
+      YelpAPI.search("horse_riding" ,"horseriding", this.state.latitude, this.state.longitude, "best_match").then((results) => {
+        this.setState({results})
       });
     });
   }
@@ -86,7 +87,7 @@ class App extends Component {
                   <div>
                     {
                       <MainPage
-                      horseRiding={this.state.horseRiding}
+                      results={this.state.results}
                       latitude={this.state.latitude}
                       longitude={this.state.longitude}
                       />

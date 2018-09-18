@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MapBox from "./MapBox";
 import MainHeading from "./MainHeading";
 import Search from "./Search";
+import Results from "./Results";
 
 class MainPage extends Component {
   /*static propTypes = {
@@ -11,17 +12,21 @@ class MainPage extends Component {
   };*/
 
   render () {
-      const { latitude, longitude, horseRiding} = this.props;
+      const { latitude, longitude, results} = this.props;
   return (
     <div className="app">
     <MainHeading/>
     <Search/>
     <MapBox
-    horseRiding={horseRiding}
+    results={results}
     latitude={latitude}
     longitude={longitude}
     />
+    <Results
+    results={results}
+    />
     </div>
+
   )
 
   }

@@ -13,16 +13,16 @@ class MapBox extends Component {
     longitude: PropTypes.number.isRequired
   };*/
   render () {
-    const { latitude, longitude, horseRiding} = this.props;
+    const { latitude, longitude, results} = this.props;
   return (
     <Map
       center={[longitude, latitude]}
-      zoom={[10]}
+      zoom={[8]}
       style={mapboxStyle}
       >
 
       {
-        horseRiding.map((shelter)=> {
+        results.map((shelter)=> {
           console.log(shelter.coordinates.latitude, shelter.coordinates.longitude);
           console.log(shelter);
           return (<Marker key={shelter.id} coordinates={[shelter.coordinates.longitude, shelter.coordinates.latitude]} anchor="bottom">
