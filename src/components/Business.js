@@ -13,7 +13,7 @@ class Business extends Component {
   return (
     <li className="business">
     {console.log(business)}
-    <h3> {business.name}</h3>
+    <h4> {business.name}</h4>
     <div
       className="bus-image-container"
       style={{

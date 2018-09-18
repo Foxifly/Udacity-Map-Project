@@ -33,7 +33,7 @@ div {
   background-color: #640D14;
   padding: 10px 0;
 }
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
   font-family: 'Unica One', cursive;
   color: white;
   text-align: center;
@@ -54,6 +54,17 @@ font-size: 40px;
 h2 {
   font-size: 20px;
   padding: 0;
+}
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase ;
+  font-family:'Roboto Condensed', sans-serif;
+  padding-bottom: 5px;
 }
 
 .search-container {
@@ -86,7 +97,6 @@ h2 {
 }
 .search-button,
 select, button{
-
   font: bold 18px 'Unica One', cursive;
   border: 1px solid white;
   border-radius: 2px;
@@ -111,7 +121,7 @@ button:hover {
 }
 
 .results {
-  padding: 0;
+  padding: 30px 0;
   margin: 0;
   width: 100%;
   height: 100%;
@@ -119,22 +129,29 @@ button:hover {
 }
 
 .result-grid {
-  padding: 0;
+  padding: 10px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
   grid-row-gap: 30px;
+  grid-column-gap: 30px;
   margin: 0 auto;
 }
 
 .bus-image-container {
   margin: 0 auto;
+
 }
 li {
+  padding: 20px 0 ;
+  border-radius:10px;
   list-style: none;
+    background-color: rgba(255,255,255,0.05)
+
 }
 .business-info {
-  padding: 20px 0;
+  padding: 5px 0;
+
 }
 .more-info {
   margin: 0;
@@ -143,5 +160,4 @@ li {
 
 .button-container {
   text-align: center;
-  padding-top: 10px;
 }
