@@ -3,6 +3,7 @@ import MapBox from "./MapBox";
 import MainHeading from "./MainHeading";
 import Search from "./Search";
 import Results from "./Results";
+import PetFinderHorse from './PetFinderHorse';
 
 class MainPage extends Component {
   /*static propTypes = {
@@ -12,7 +13,7 @@ class MainPage extends Component {
   };*/
 
   render () {
-      const { latitude, longitude, results} = this.props;
+      const { latitude, longitude, results, randHorse} = this.props;
   return (
     <div className="app">
     <MainHeading/>
@@ -24,6 +25,9 @@ class MainPage extends Component {
     />
     <Results
     results={results}
+    />
+    <PetFinderHorse
+    randHorse={randHorse}
     />
     </div>
 

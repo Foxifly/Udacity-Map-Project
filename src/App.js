@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import MainPage from "./components/MainPage"
 import * as YelpAPI from "./util/YelpAPI.js";
+import * as PetFinder from "./util/PetfinderAPI.js";
 import { Route } from "react-router-dom";
 
 class App extends Component {
   state = {
     results: [],
+    randHorse: [],
     horseBoarding: [],
     horseRiding: [],
     horseEquipment: [],
@@ -18,6 +20,9 @@ class App extends Component {
     longitude: -122.4194
     }
   componentWillMount() {
+      PetFinder.petRandom().then((randHorse)=> {
+        this.setState({randHorse })
+      })
       this.locateUser();
 
     }
@@ -87,6 +92,7 @@ class App extends Component {
                   <div>
                     {
                       <MainPage
+                      randHorse={this.state.randHorse}
                       results={this.state.results}
                       latitude={this.state.latitude}
                       longitude={this.state.longitude}
@@ -100,7 +106,7 @@ class App extends Component {
         />
 
         <Route
-          path="/search"
+          path="/info"
           render={( {history}) => {
             return (
               <div className="app">
