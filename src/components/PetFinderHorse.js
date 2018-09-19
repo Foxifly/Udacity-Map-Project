@@ -27,6 +27,7 @@ class PetFinderHorse extends Component {
     }
 
     return (
+      <div className="rand-horse-wrapper">
       <div className="rand-horse-container">
         {randHorse.name && (
           <div className="adopt-heading">
@@ -34,59 +35,60 @@ class PetFinderHorse extends Component {
             <h4>{randHorse.name.$t}</h4>
           </div>
         )}
-        <ul>
-          <div className="horse-image-container">
+
+          <div className="horse-finder-image-container">
             {horseImage && (
-              <li>
+
                 <img src={horseImage} />
-              </li>
+
             )}
           </div>
-          <div clasnName="general-horse-info">
-            {randHorse.age && <li>Age Group: {randHorse.age.$t}</li>}
+          <div className="general-horse-info">
+            {randHorse.age && <p>Age Group: {randHorse.age.$t}</p>}
 
-            {randHorse.sex && <li>Gender: {randHorse.sex.$t}</li>}
-            {breedString && <li>Breeds: {breedString}</li>}
+            {randHorse.sex && <p>Gender: {randHorse.sex.$t}</p>}
+            {breedString && <p>Breeds: {breedString}</p>}
 
             {!breedString &&
               randHorse.breeds &&
               randHorse.breeds.breed && (
-                <li>Breed: {randHorse.breeds.breed.$t}</li>
+                <p>Breed: {randHorse.breeds.breed.$t}</p>
               )}
           </div>
 
           <div className="description-container">
             {randHorse.description && (
-              <li> Description: {randHorse.description.$t}</li>
+               <p>Description: {randHorse.description.$t}</p>
             )}
           </div>
           <div className="contact-container">
             {randHorse.contact &&
               randHorse.contact.phone.$t && (
-                <li>
+
                   <p>Contact Phone: {randHorse.contact.phone.$t}</p>
-                </li>
+
               )}
 
             {randHorse.contact &&
               randHorse.contact.email.$t && (
-                <li>
+
                   <p>Contact Email: {randHorse.contact.email.$t}</p>
-                </li>
+
               )}
 
             {randHorse.contact &&
               randHorse.contact.city.$t &&
               randHorse.contact.state.$t && (
-                <li>
+
                   <p>
                     Location: {randHorse.contact.city.$t},{" "}
                     {randHorse.contact.state.$t}
                   </p>
-                </li>
+
               )}
           </div>
-        </ul>
+
+      </div>
       </div>
     );
   }

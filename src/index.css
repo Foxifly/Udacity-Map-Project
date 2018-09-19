@@ -161,21 +161,54 @@ li {
 .button-container {
   text-align: center;
 }
-
+.rand-horse-wrapper {
+  background-color: #800E13;
+}
 
 .rand-horse-container {
-  width: 100%;
+  width: 75%;
   height: 100%;
-  background-color: #800E13;
-  display: flex;
-  flex-wrap:wrap;
+
   justify-content: center;
+  display: grid;
+   grid-template-columns: repeat(6, 1fr);
+   /* grid-template-rows: repeat(5, 1fr); */
+   grid-column-gap: 30px;
+   grid-row-gap: 30px;
+ grid-template-areas:
+    '. . heading heading . .'
+   'hfimage hfimage hfimage . ghInfo .'
+   'hfimage hfimage hfimage . ghInfo .'
+   'hfimage hfimage hfimage description description description'
+   'hfimage hfimage hfimage .  contact .';
+   align-items: center;
+   justify-content: center;
+   margin: 0 auto;
 
 }
 
-.rand-horse-container li {
-background-color: rgba(255,255,255,0);
-  color: white;
-  padding: 0;
-  margin: 0;
+.adopt-heading {
+  grid-area: heading;
+}
+.horse-finder-image-container {
+  grid-area: hfimage;
+}
+.horse-finder-image-container img {
+  width:100%;
+  height: auto;
+}
+
+.general-horse-info {
+  grid-area: ghInfo;
+}
+
+.description-container {
+grid-area: description;
+}
+
+.description-container p {
+  text-align: justify;
+}
+.contact-container{
+grid-area: contact;
 }
