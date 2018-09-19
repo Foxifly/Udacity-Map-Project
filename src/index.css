@@ -168,19 +168,20 @@ li {
 .rand-horse-container {
   width: 75%;
   height: 100%;
-
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 50px;
   justify-content: center;
   display: grid;
-   grid-template-columns: repeat(6, 1fr);
+   grid-template-columns: repeat(5, 1fr);
    /* grid-template-rows: repeat(5, 1fr); */
-   grid-column-gap: 30px;
+   grid-column-gap: 50px;
    grid-row-gap: 30px;
  grid-template-areas:
-    '. . heading heading . .'
-   'hfimage hfimage hfimage . ghInfo .'
-   'hfimage hfimage hfimage . ghInfo .'
-   'hfimage hfimage hfimage description description description'
-   'hfimage hfimage hfimage .  contact .';
+    '. heading heading heading .'
+   'hfimage hfimage . ghInfo .'
+   'hfimage hfimage description description description'
+   'hfimage hfimage .  contact .';
    align-items: center;
    justify-content: center;
    margin: 0 auto;

@@ -27,6 +27,7 @@ class PetFinderHorse extends Component {
     }
 
     return (
+
       <div className="rand-horse-wrapper">
       <div className="rand-horse-container">
         {randHorse.name && (
@@ -65,14 +66,14 @@ class PetFinderHorse extends Component {
             {randHorse.contact &&
               randHorse.contact.phone.$t && (
 
-                  <p>Contact Phone: {randHorse.contact.phone.$t}</p>
+                  <p>Phone: {randHorse.contact.phone.$t}</p>
 
               )}
 
             {randHorse.contact &&
               randHorse.contact.email.$t && (
 
-                  <p>Contact Email: {randHorse.contact.email.$t}</p>
+                  <p>Email: {randHorse.contact.email.$t}</p>
 
               )}
 

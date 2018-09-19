@@ -29,8 +29,8 @@ class Business extends Component {
     <p>{business.location.address3}</p>
     <p>{business.location.city}, {business.location.state} {business.location.zip_code}</p>
     </div>
-    <div class="button-container">
-    <button class="more-info">More Info</button>
+    <div className="button-container">
+    <button className="more-info">More Info</button>
     </div>
     </li>
 

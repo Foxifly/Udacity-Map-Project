@@ -18,11 +18,12 @@ class MainPage extends Component {
     <div className="app">
     <MainHeading/>
     <Search/>
-    <MapBox
+    {/*<MapBox
     results={results}
     latitude={latitude}
     longitude={longitude}
-    />
+    />*/}
+    <MapBox isMarkerShown/>;
     <Results
     results={results}
     />
