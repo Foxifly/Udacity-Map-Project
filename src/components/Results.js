@@ -16,10 +16,14 @@ class Results extends Component {
     <h3> Results</h3>
     <div className="result-container">
     <ol className="result-grid">
-      {results && results.map(result => {
+    {!results && <p>Loading Results...</p>}
+    {results === "Error" &&
+    <p> Could not fetch Yelp API. Please try again later.</p>}
+      {results && results !== "Error" && results.map(result => {
 
         return (
           <Business
+            key={result.id}
             business={result}
           />
         );

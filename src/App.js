@@ -34,6 +34,11 @@ class App extends Component {
         latitude: position.coords.latitude
       });
       YelpAPI.search("horse_riding" ,"horseriding", this.state.latitude, this.state.longitude, "best_match").then((results) => {
+        if (results === "Error") {
+          this.setState({results: "Error"}, function(c) {
+            console.log(this.state.results)
+          })
+        }
         this.setState({results})
       });
     });

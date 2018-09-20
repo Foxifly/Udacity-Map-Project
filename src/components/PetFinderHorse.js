@@ -5,11 +5,9 @@ class PetFinderHorse extends Component {
     const { randHorse } = this.props;
     let breedString = "";
     let horseImage = "";
-    console.log(randHorse);
-
     if (randHorse && randHorse.breeds && randHorse.breeds.breed && Array.isArray(randHorse.breeds.breed)) {
       randHorse.breeds.breed.map(breed => {
-        breedString += breed.$t + ", ";
+        return breedString += breed.$t + ", ";
       });
     }
     if ( randHorse &&
@@ -40,7 +38,7 @@ class PetFinderHorse extends Component {
           <div className="horse-finder-image-container">
             {horseImage && (
 
-                <img src={horseImage} />
+                <img alt="PetFinder horse for adoption" src={horseImage} />
 
             )}
           </div>
@@ -50,7 +48,7 @@ class PetFinderHorse extends Component {
             {randHorse && randHorse.sex && <p>Gender: {randHorse.sex.$t}</p>}
             {breedString && <p>Breeds: {breedString}</p>}
 
-            {!breedString &&
+            {randHorse && randHorse.breeds && !breedString &&
               randHorse.breeds &&
               randHorse.breeds.breed && (
                 <p>Breed: {randHorse.breeds.breed.$t}</p>
@@ -58,7 +56,7 @@ class PetFinderHorse extends Component {
           </div>
 
           <div className="description-container">
-            {randHorse.description && (
+            {randHorse && randHorse.description && (
                <p>Description: {randHorse.description.$t}</p>
             )}
           </div>
