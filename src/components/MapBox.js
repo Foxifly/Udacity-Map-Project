@@ -22,14 +22,13 @@ const MapWithAMarkerClusterer = compose(
   withGoogleMap
 )(props => (
   <GoogleMap
-    defaultZoom={10}
+    defaultZoom={9}
     defaultCenter={{ lat: 37.7749, lng: -122.4194 }}
     center={{ lat: props.latitude, lng: props.longitude }}
   >
     {props.results &&
       props.results !== "Error" &&
       props.results.map(result => {
-        console.log(result + " FDS");
         return <MapMarker result={result} />;
       })}
   </GoogleMap>
@@ -37,13 +36,10 @@ const MapWithAMarkerClusterer = compose(
 
 class MapBox extends Component {
   state = {
-    markers: [],
     latitude: 30,
     longitude: -30,
     results: [],
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
+
   };
   componentDidMount() {
     this.setState({
@@ -68,22 +64,6 @@ class MapBox extends Component {
     }
   }
 
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onMapClicked = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
   render() {
     console.log(this.props.results);
     return (
@@ -91,10 +71,6 @@ class MapBox extends Component {
         results={this.state.results}
         latitude={this.state.latitude}
         longitude={this.state.longitude}
-        markers={this.state.markers}
-        onMarkerClick={this.onMarkerClick}
-        onActiveMarker={this.state.activeMarker}
-        onVisible={this.state.showingInfoWindow}
       />
     );
   }
