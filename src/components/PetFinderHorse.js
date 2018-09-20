@@ -7,13 +7,13 @@ class PetFinderHorse extends Component {
     let horseImage = "";
     console.log(randHorse);
 
-    if (randHorse.breeds && Array.isArray(randHorse.breeds.breed)) {
+    if (randHorse && randHorse.breeds && randHorse.breeds.breed && Array.isArray(randHorse.breeds.breed)) {
       randHorse.breeds.breed.map(breed => {
         breedString += breed.$t + ", ";
       });
     }
-    if (
-      randHorse.media &&
+    if ( randHorse &&
+      randHorse.media && randHorse.media.photos &&
       randHorse.media.photos.photo &&
       Array.isArray(randHorse.media.photos.photo)
     ) {
@@ -30,7 +30,7 @@ class PetFinderHorse extends Component {
 
       <div className="rand-horse-wrapper">
       <div className="rand-horse-container">
-        {randHorse.name && (
+        {randHorse && randHorse.name && (
           <div className="adopt-heading">
             <h3>OPT TO ADOPT</h3>
             <h4>{randHorse.name.$t}</h4>
@@ -45,9 +45,9 @@ class PetFinderHorse extends Component {
             )}
           </div>
           <div className="general-horse-info">
-            {randHorse.age && <p>Age Group: {randHorse.age.$t}</p>}
+            {randHorse && randHorse.age && <p>Age Group: {randHorse.age.$t}</p>}
 
-            {randHorse.sex && <p>Gender: {randHorse.sex.$t}</p>}
+            {randHorse && randHorse.sex && <p>Gender: {randHorse.sex.$t}</p>}
             {breedString && <p>Breeds: {breedString}</p>}
 
             {!breedString &&
@@ -63,21 +63,21 @@ class PetFinderHorse extends Component {
             )}
           </div>
           <div className="contact-container">
-            {randHorse.contact &&
+            {randHorse && randHorse.contact &&
               randHorse.contact.phone.$t && (
 
                   <p>Phone: {randHorse.contact.phone.$t}</p>
 
               )}
 
-            {randHorse.contact &&
+            {randHorse && randHorse.contact &&
               randHorse.contact.email.$t && (
 
                   <p>Email: {randHorse.contact.email.$t}</p>
 
               )}
 
-            {randHorse.contact &&
+            {randHorse && randHorse.contact &&
               randHorse.contact.city.$t &&
               randHorse.contact.state.$t && (
 

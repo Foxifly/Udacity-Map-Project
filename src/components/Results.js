@@ -16,7 +16,7 @@ class Results extends Component {
     <h3> Results</h3>
     <div className="result-container">
     <ol className="result-grid">
-      {results.map(result => {
+      {results && results.map(result => {
 
         return (
           <Business
