@@ -34,6 +34,7 @@ class App extends Component {
         latitude: position.coords.latitude
       });
       YelpAPI.search("horse_riding" ,"horseriding", this.state.latitude, this.state.longitude, "best_match").then((results) => {
+        console.log(results);
         if (results === "Error") {
           this.setState({results: "Error"})
         }
@@ -42,22 +43,22 @@ class App extends Component {
     });
   }
 
-  searchLocation(toSearch, topic) {
+  searchLocation(toSearch, category, keyword) {
     HereAPI.searchForLocation(toSearch).then((result) => {
       if (result) {
         this.setState({
           latitude: result.latitude,
           longitude: result.longitude
         }, function(c) {
-          this.getNewSearchTopic(topic, this.state.latitude, this.state.longitude, "best_match");
+          this.getNewSearchTopic(keyword, category, this.state.latitude, this.state.longitude, "best_match");
         })
       }
 
     })
   }
 
-  getNewSearchTopic = (topic, latitude, longitude, sort) => {
-    YelpAPI.search(topic ,topic, latitude, longitude, sort).then((results) => {
+  getNewSearchTopic = (keyword, category, latitude, longitude, sort) => {
+    YelpAPI.search(keyword, category, latitude, longitude, sort).then((results) => {
       this.setState({results})
     });
   }

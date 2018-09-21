@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", filter: "" };
+    this.state = { value: "", filter: "", topic: "" };
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -11,24 +11,41 @@ class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+      console.log(this.state);
     if (this.state.filter && this.state.value) {
-        this.props.searchLocation(this.state.value, this.state.filter);
+      this.props.searchLocation(this.state.value, this.state.filter, this.state.topic);
     } else if (this.state.value) {
-      this.setState({filter: "horseriding"});
-      this.props.searchLocation(this.state.value, "horseriding");
+      this.setState({ filter: "horseriding" });
+      this.props.searchLocation(this.state.value, "horseriding", this.state.topic);
     }
-
   };
   handleTermChange(event) {
     this.setState({ value: event.target.value });
   }
   handleFilterChange(selection) {
-    this.setState({ filter: selection});
+    this.setState({ filter: selection }, function(c) {
+    selection === "horseriding"
+        ? this.setState({ topic: "horse_riding" })
+        : selection === "horse_board"
+          ? this.setState({ topic: "horse_board" })
+          : selection === "horseracing"
+            ? this.setState({ topic: "horse_racing" })
+            : selection === "horsequipment"
+              ? this.setState({ topic: "tack" })
+              : selection === "petphotography"
+                ? this.setState({ topic: "photography" })
+                : selection === "farriers"
+                  ? this.setState({ topic: "horse_farrier" })
+                  : selection === "vets"
+                    ? this.setState({ topic: "vet" })
+                    : this.setState({ topic: "horse_riding" });
+    });
+
+
   }
 
   render() {
     return (
-
       <form onSubmit={this.handleSubmit} className="search-container">
         <div className="search-wrapper">
           <input
@@ -40,18 +57,17 @@ class Search extends Component {
 
         <div className="filter-options">
           <select
-          value={this.state.filter}
-          onChange={event => {
-            //passes back into App.js to move the book from one shelf to another
-            //FUNCTION THAT UPDATES YELP CALL
-            //Sets the state as the new value of where the book is at now
-            this.handleFilterChange(event.target.value)}}>
+            value={this.state.filter}
+            onChange={event => {
+              this.handleFilterChange(event.target.value);
+            }}
+          >
             <option value="horseriding">Horse Riding</option>
             <option value="horse_board">Horse Boarding</option>
             <option value="horseracing">Horse Racing</option>
-            <option value="horseequipment">Horse Equipment</option>
+            <option value="horsequipment">Horse Equipment</option>
             <option value="petphotography">Pet Photography</option>
-            <option value="farrier">Farrier</option>
+            <option value="farriers">Farrier</option>
             <option value="vets">Veterinarian</option>
           </select>
         </div>
