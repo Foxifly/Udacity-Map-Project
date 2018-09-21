@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import notFound from "../icons/Image_Not_Found.jpg"
 
 class Business extends Component {
   /*static propTypes = {
@@ -10,6 +10,12 @@ class Business extends Component {
 
   render () {
     const {business} = this.props;
+    let url;
+    if (business.image_url) {
+      url = business.image_url;
+    } else {
+      url = notFound;
+    }
   return (
     <li className="business">
     <h4> {business.name}</h4>
@@ -18,7 +24,7 @@ class Business extends Component {
       style={{
         width: 200,
         height: 200,
-        backgroundImage: `url(${business.image_url})`,
+        backgroundImage: `url(${url})`,
         backgroundSize: 'cover'
       }}
     />
