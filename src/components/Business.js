@@ -12,7 +12,6 @@ class Business extends Component {
     const {business} = this.props;
   return (
     <li className="business">
-    {console.log(business)}
     <h4> {business.name}</h4>
     <div
       className="bus-image-container"

@@ -49,23 +49,18 @@ class MapBox extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log(nextProps);
     if (nextProps !== this.props) {
       this.setState(
         {
           latitude: nextProps.latitude,
           longitude: nextProps.longitude,
           results: nextProps.results
-        },
-        function(c) {
-          console.log(this.state.latitude, this.state.longitude);
         }
       );
     }
   }
 
   render() {
-    console.log(this.props.results);
     return (
       <MapWithAMarkerClusterer
         results={this.state.results}
