@@ -16,12 +16,16 @@ class Search extends Component {
       this.props.searchLocation(this.state.value, this.state.filter, this.state.topic);
     } else if (this.state.value) {
       this.setState({ filter: "horseriding" });
-      this.props.searchLocation(this.state.value, "horseriding", this.state.topic);
+      this.props.searchLocation(this.state.value, "horseriding", "horse_riding");
+    } if (!this.state.value) {
+      this.props.searchCurrentLocation(this.state.value, "horseriding", this.state.topic);
     }
   };
+
   handleTermChange(event) {
     this.setState({ value: event.target.value });
   }
+
   handleFilterChange(selection) {
     this.setState({ filter: selection }, function(c) {
     selection === "horseriding"
@@ -40,8 +44,6 @@ class Search extends Component {
                     ? this.setState({ topic: "vet" })
                     : this.setState({ topic: "horse_riding" });
     });
-
-
   }
 
   render() {
@@ -81,42 +83,3 @@ class Search extends Component {
 }
 
 export default Search;
-
-/*import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import ImageInput from './utils/ImageInput';
-import serializeForm from 'form-serialize'
-
-class CreateContact extends Component {
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const values = serializeForm(event.target, {hash:true});
-    console.log(values);
-    if (this.props.onCreateContact) {
-    this.props.onCreateContact(values);
-    }
-
-  }
-
-  render() {
-    return(
-      <div>
-      <Link to="/" className="close-create-contact">Close</Link>
-      <form onSubmit={this.handleSubmit} className="create-contact-form">
-      <ImageInput className="create-contact-avatar-input"
-      name="avatarURL"
-      maxHeight={64}/>
-      <div className="create-contact-details">
-      <input type="text" name="name" placeholder="Name"/>
-      <input type="text" name="email" placeholder="Email"/>
-      <button>Add Contact</button>
-      </div>
-      </form>
-      </div>
-    )
-  }
-}
-
-
-export default CreateContact
-*/

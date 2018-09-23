@@ -13,12 +13,13 @@ class MainPage extends Component {
   };*/
 
   render () {
-      const { latitude, longitude, results, randHorse, searchLocation} = this.props;
+      const { latitude, longitude, results, randHorse, searchLocation, searchCurrentLocation} = this.props;
   return (
     <div className="app">
     <MainHeading/>
     <Search
     searchLocation={searchLocation}
+    searchCurrentLocation={searchCurrentLocation}
     />
     <MapBox
     results={results}

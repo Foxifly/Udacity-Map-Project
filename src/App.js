@@ -16,6 +16,7 @@ class App extends Component {
       longitude: -122.4194
       }
     this.searchLocation = this.searchLocation.bind(this);
+    this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
   }
 
   componentWillMount() {
@@ -57,6 +58,10 @@ class App extends Component {
     })
   }
 
+  searchCurrentLocation(toSearch, category, keyword) {
+          this.getNewSearchTopic(keyword, category, this.state.latitude, this.state.longitude, "best_match");
+
+  }
   getNewSearchTopic = (keyword, category, latitude, longitude, sort) => {
     YelpAPI.search(keyword, category, latitude, longitude, sort).then((results) => {
       this.setState({results})
@@ -79,6 +84,7 @@ class App extends Component {
                     {
                       <MainPage
                       searchLocation={this.searchLocation}
+                      searchCurrentLocation={this.searchCurrentLocation}
                       randHorse={this.state.randHorse}
                       results={this.state.results}
                       latitude={this.state.latitude}
