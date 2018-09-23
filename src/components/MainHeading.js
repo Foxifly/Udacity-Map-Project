@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-//The menubar is a stateless component so we can define it just in a function.
+//Stateless component - Main heading. Spreadable across all pages. No props, state, etc.
 function MainHeading(props) {
-  return(
+  return (
     <div className="main-header">
-        <h1>SPUR OF THE MOMENT</h1>
-        <h2>A horse care application</h2>
-      </div>
-  )
+      <h1>SPUR OF THE MOMENT</h1>
+      <h2>A horse care application</h2>
+    </div>
+  );
 }
 
 export default MainHeading;

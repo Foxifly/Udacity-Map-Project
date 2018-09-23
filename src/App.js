@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import MainPage from "./components/MainPage"
+import MainPage from "./components/MainPage";
+import ResultPage from "./components/ResultPage"
 import * as YelpAPI from "./util/YelpAPI.js";
 import * as HereAPI from "./util/HereAPI.js";
 import * as PetFinder from "./util/PetfinderAPI.js";
@@ -11,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       results: [],
-      randHorse: [],
+      randHorse: {},
       latitude: 37.7749,
       longitude: -122.4194
       }
@@ -102,8 +103,14 @@ class App extends Component {
           path="/info"
           render={( {history}) => {
             return (
-              <div className="app">
-                <h1>Hello</h1>
+              <div>
+              <ResultPage
+              searchLocation={this.searchLocation}
+              searchCurrentLocation={this.searchCurrentLocation}
+              results={this.state.results}
+              latitude={this.state.latitude}
+              longitude={this.state.longitude}
+              />
               </div>
             );
           }}

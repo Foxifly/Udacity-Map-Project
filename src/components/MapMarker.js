@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 const { Marker, InfoWindow } = require("react-google-maps");
 
+//Displays all the markers on the generated googlemap.
 class MapMarker extends Component {
+  static propTypes = {
+    result: PropTypes.object.isRequired
+  };
+
+  //Need to bind handleClick with this otherwise this will be undefined.
   constructor(props) {
     super(props);
     this.state = {
@@ -10,36 +17,38 @@ class MapMarker extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  //The handleClick method runs when the marker has been clicked - it opens/closes the info window.
   handleClick() {
     this.setState(state => ({
       open: !this.state.open
     }));
   }
 
+  //The render method for the markers takes each result and inserts a mapmarker at those coordinates. If the marker is clicked, the info window will appear and display brief info about the location. Clicking the marker will also display detained info about the venue.
   render() {
+    const { result } = this.props;
     return (
       <div>
         <Marker
-          key={this.props.result.id}
           onClick={this.handleClick}
           position={{
-            lat: this.props.result.coordinates.latitude,
-            lng: this.props.result.coordinates.longitude
+            lat: result.coordinates.latitude,
+            lng: result.coordinates.longitude
           }}
         >
           {this.state.open && (
             <InfoWindow onCloseClick={this.handleClick}>
               <div>
-                <strong>{this.props.result.name}</strong>
+                <strong>{result.name}</strong>
                 <br /> <br />
-                {this.props.result.location.address1}
-                {this.props.result.location.address2} <br />
-                {this.props.result.location.city},
-                {this.props.result.location.state}
-                {this.props.result.location.zip_code}
+                {result.location.address1}
+                {result.location.address2} <br />
+                {result.location.city},
+                {result.location.state}
+                {result.location.zip_code}
                 <br />
                 <br />
-                {this.props.result.display_phone}
+                {result.display_phone}
               </div>
             </InfoWindow>
           )}
