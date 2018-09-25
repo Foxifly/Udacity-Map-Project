@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 class Search extends Component {
+
+  //needed to bind these functions or else this will be undefined. 
   constructor(props) {
     super(props);
     this.state = { value: "", filter: "", topic: "" };
@@ -9,26 +11,46 @@ class Search extends Component {
     this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
+  //When "Search" is clicked, search the location with the searchLocation function props.
   handleSubmit = event => {
     event.preventDefault();
-      console.log(this.state);
+    console.log(this.state);
     if (this.state.filter && this.state.value) {
-      this.props.searchLocation(this.state.value, this.state.filter, this.state.topic);
+      this.props.searchLocation(
+        this.state.value,
+        this.state.filter,
+        this.state.topic
+      );
+
+      //if the select box hasn't been changed, search with the filter horseriding by default.
     } else if (this.state.value) {
       this.setState({ filter: "horseriding" });
-      this.props.searchLocation(this.state.value, "horseriding", "horse_riding");
-    } if (!this.state.value) {
-      this.props.searchCurrentLocation(this.state.value, "horseriding", this.state.topic);
+      this.props.searchLocation(
+        this.state.value,
+        "horseriding",
+        "horse_riding"
+      );
+    }
+
+    //If there isn't a location entered by the option menu changed, search by the currently loaded location
+    if (!this.state.value) {
+      this.props.searchCurrentLocation(
+        this.state.value,
+        "horseriding",
+        this.state.topic
+      );
     }
   };
 
+  //set the state of the value when the search text is changed.
   handleTermChange(event) {
     this.setState({ value: event.target.value });
   }
 
+  // assign a search query for the yelp api call.
   handleFilterChange(selection) {
     this.setState({ filter: selection }, function(c) {
-    selection === "horseriding"
+      selection === "horseriding"
         ? this.setState({ topic: "horse_riding" })
         : selection === "horse_board"
           ? this.setState({ topic: "horse_board" })
@@ -46,6 +68,7 @@ class Search extends Component {
     });
   }
 
+//Loads the search bar.
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="search-container">

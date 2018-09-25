@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import Map from "./Map";
 import MainHeading from "./MainHeading";
-import Search from "./Search";
 import Results from "./Results";
-import PetFinderHorse from './PetFinderHorse';
+import PropTypes from 'prop-types';
 
+//This component will display on a specific business screen. (once one is selected)
 class MainPage extends Component {
-  /*static propTypes = {
-    horseRiding: PropTypes.array.isRequired,
+  static propTypes = {
+    results: PropTypes.array.isRequired,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
-  };*/
+  };
 
   render () {
-      const { latitude, longitude, results, randHorse, searchLocation, searchCurrentLocation} = this.props;
+      const { latitude, longitude, results } = this.props;
   return (
     <div className="app">
     <MainHeading/>
