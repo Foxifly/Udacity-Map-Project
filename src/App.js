@@ -7,6 +7,12 @@ import * as HereAPI from "./util/HereAPI.js";
 import * as PetFinder from "./util/PetfinderAPI.js";
 import { Route } from "react-router-dom";
 
+
+/* import { Link } from "react-router-dom";
+<Link className="close-search" to="/">
+  Close
+</Link>
+*/ 
 class App extends Component {
   constructor(props) {
     super(props);
@@ -115,8 +121,6 @@ class App extends Component {
             );
           }}
         />
-
-
       </div>
     );
   }

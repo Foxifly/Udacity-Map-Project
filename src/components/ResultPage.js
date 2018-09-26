@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Map from "./Map";
 import MainHeading from "./MainHeading";
 import Results from "./Results";
+import ResultFocus from "./ResultFocus";
 import PropTypes from 'prop-types';
 
 //This component will display on a specific business screen. (once one is selected)
@@ -21,6 +22,9 @@ class MainPage extends Component {
     results={results}
     latitude={latitude}
     longitude={longitude}
+    />
+    <ResultFocus
+
     />
     <Results
     results={results}

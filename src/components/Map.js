@@ -31,7 +31,7 @@ const GMap = compose(
 ));
 
 //The map component that passes the state into the gMap component to display the map at the user's location.
-class Map extends Component {
+class Map extends Component { 
   state = {
     latitude: 30,
     longitude: -30,

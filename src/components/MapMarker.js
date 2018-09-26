@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 const { Marker, InfoWindow } = require("react-google-maps");
 
+
 //Displays all the markers on the generated googlemap.
 class MapMarker extends Component {
   static propTypes = {
@@ -35,7 +36,9 @@ class MapMarker extends Component {
             lat: result.coordinates.latitude,
             lng: result.coordinates.longitude
           }}
+      
         >
+
           {this.state.open && (
             <InfoWindow onCloseClick={this.handleClick}>
               <div>
@@ -52,6 +55,7 @@ class MapMarker extends Component {
               </div>
             </InfoWindow>
           )}
+
         </Marker>
       </div>
     );
