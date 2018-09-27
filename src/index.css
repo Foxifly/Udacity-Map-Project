@@ -4,24 +4,22 @@ body {
   width: 100%;
   height: 100%;
 }
+
 div {
   padding: 0;
   margin: 0;
 }
 
-
-.mapboxgl-map{
- width: 100vw;
- height: 400px;
+.mapboxgl-map {
+  width: 100vw;
+  height: 400px;
 }
-
 
 .mapMarkerStyle {
   background-color: green;
   width: 1.5rem;
   height: 1.5rem;
   display: block;
-
   top: -0.5rem;
   position: relative;
   border-radius: 1.2rem 1.5rem 0;
@@ -33,6 +31,7 @@ div {
   background-color: #35363B;
   padding: 10px 0;
 }
+
 h1, h2, h3, h4, p {
   font-family: 'Unica One', cursive;
   color: white;
@@ -42,61 +41,78 @@ h1, h2, h3, h4, p {
 }
 
 p {
-  font-family:'Roboto Condensed', sans-serif;
- }
+  font-family: 'Roboto Condensed', sans-serif;
+}
 
 h1 {
-    letter-spacing: 2px;
+  letter-spacing: 2px;
   font-weight: bold;
-font-size: 40px;
+  font-size: 40px;
 }
 
 h2 {
   font-size: 20px;
   padding: 0;
+  color: #dea9ac
 }
+
 h3 {
   font-size: 32px;
+  color: #dea9ac;
+
 }
 
 h4 {
   font-weight: bold;
   font-size: 18px;
-  text-transform: uppercase ;
-  font-family:'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
   padding-bottom: 5px;
 }
 
 .search-container {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   position: relative;
-  background-color: #800E13;
+  background-color: #252529;
   width: 100%;
   padding: 15px 0;
   justify-content: center;
 }
 
 .search-wrapper {
-    width: 40%;
+  width: 40%;
 }
+
 .filter-wrapper {
   width: 10%;
+}
+
+@media screen and (max-width: 600px) {
+  .search-wrapper {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .filter-wrapper {
+    width: 90%;
+  }
 }
 
 .search-container input {
   width: 100%;
   margin-left: 0px;
   font-size: 18px;
-  font-family:'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   text-indent: 30px;
   padding: 5px 0;
   height: 25px;
-  background: white url('icons/search-icon.png') left no-repeat ;
+  background: white url('icons/search-icon.png') left no-repeat;
   background-size: 25px 25px;
 }
+
 .search-button,
-select, button, .more-info, .yelp-button{
+select, button, .more-info, .yelp-button {
   text-decoration: none;
   font: bold 18px 'Unica One', cursive;
   border: 1px solid white;
@@ -113,11 +129,13 @@ select, button, .more-info, .yelp-button{
 
 .more-info, .yelp-button {
   border-radius: 5px;
-  padding: 5px 20px!important;
+  padding: 5px 20px !important;
 }
+
 .button-container {
   padding-top: 10px;
 }
+
 select {
   width: 200px;
 }
@@ -134,7 +152,7 @@ button:hover, .more-info:hover, .yelp-button:hover {
   margin: 0;
   width: 100%;
   height: 100%;
-  background-color: #800E13;
+  background-color: #252529;
 }
 
 .result-grid {
@@ -147,21 +165,39 @@ button:hover, .more-info:hover, .yelp-button:hover {
   margin: 0 auto;
 }
 
+@media screen and (max-width: 1016px) {
+  .result-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .result-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .bus-image-container {
   margin: 0 auto;
-
 }
+
 li {
-  padding: 20px 0 ;
-  border-radius:10px;
+  padding: 20px 0;
+  border-radius: 10px;
   list-style: none;
-    background-color: rgba(255,255,255,0.05)
-
+  background-color: rgba(255, 255, 255, 0.1)
 }
+
 .business-info {
   padding: 5px 0;
-
 }
+
 .more-info {
   margin: 0;
   padding: 5px;
@@ -170,41 +206,67 @@ li {
 .button-container {
   text-align: center;
 }
+
 .rand-horse-wrapper {
-  background-color: #800E13;
+  background-color: #3B3B3F;
 }
 
 .rand-horse-container {
   width: 75%;
   height: 100%;
-  background-color: rgba(255,255,255,0.1);
-  border-radius: 10px;
   padding: 50px;
   justify-content: center;
   display: grid;
-   grid-template-columns: repeat(5, 1fr);
-   /* grid-template-rows: repeat(5, 1fr); */
-   grid-column-gap: 50px;
-   grid-row-gap: 30px;
- grid-template-areas:
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-template-rows: repeat(5, 1fr); */
+  grid-column-gap: 50px;
+  grid-row-gap: 30px;
+  grid-template-areas:
     '. heading heading heading .'
-   'hfimage hfimage . ghInfo .'
-   'hfimage hfimage description description description'
-   'hfimage hfimage .  contact .';
-   align-items: center;
-   justify-content: center;
-   margin: 0 auto;
+    'hfimage hfimage . ghInfo .'
+    'hfimage hfimage description description description'
+    'hfimage hfimage .  contact .';
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
 
+@media screen and (max-width: 932px) {
+  .rand-horse-container {
+    width: 75%;
+    height: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 10px;
+    grid-template-areas:
+      'heading heading heading'
+      'hfimage hfimage hfimage'
+      'ghInfo ghInfo ghInfo'
+      'description description description'
+      'contact contact contact';
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .horse-finder-image-container {
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+    height: auto;
+  }
 }
 
 .adopt-heading {
   grid-area: heading;
 }
+
 .horse-finder-image-container {
+  width: 80%;
   grid-area: hfimage;
 }
+
 .horse-finder-image-container img {
-  width:100%;
+  width: 100%;
   height: auto;
 }
 
@@ -213,22 +275,23 @@ li {
 }
 
 .description-container {
-grid-area: description;
+  grid-area: description;
 }
 
 .description-container p {
   text-align: justify;
 }
-.contact-container{
-grid-area: contact;
+
+.contact-container {
+  grid-area: contact;
 }
 
 .go-back::before {
   top: 18px;
   left: 18px;
-color: white;
-content: "<";
-font: 42px'Unica One', cursive;
+  color: white;
+  content: "<";
+  font: 42px'Unica One', cursive;
   position: absolute;
   z-index: 1000;
   width: 50px;
@@ -239,8 +302,8 @@ font: 42px'Unica One', cursive;
 }
 
 .result-featured {
-    background-color: black;
-    padding: 20px 0;
+  background-color: #3B3B3F;
+  padding: 20px 0;
 }
 
 .result-featured-container {
@@ -256,6 +319,7 @@ font: 42px'Unica One', cursive;
 .result-featured-text {
   text-align: center;
 }
+
 .result-featured-text,
 .result-featured-image {
   width: 50%;
@@ -265,6 +329,16 @@ font: 42px'Unica One', cursive;
   width: 90%;
   height: auto;
 }
-.button-container{
+
+.button-container {
   margin-top: 10px;
+}
+
+.footer {
+  background-color: #252529;
+  padding: 10px 0;
+}
+
+.footer-link {
+  color: #bdbdbe;
 }

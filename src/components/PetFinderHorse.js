@@ -80,7 +80,7 @@ class PetFinderHorse extends Component {
           <div className="description-container">
             {randHorse &&
               randHorse.description && (
-                <p>Description: {randHorse.description.$t}</p>
+                <p>{randHorse.description.$t}</p>
               )}
           </div>
 
@@ -88,13 +88,13 @@ class PetFinderHorse extends Component {
             {randHorse &&
               randHorse.contact &&
               randHorse.contact.phone.$t && (
-                <p>Phone: {randHorse.contact.phone.$t}</p>
+                <p>{randHorse.contact.phone.$t}</p>
               )}
 
             {randHorse &&
               randHorse.contact &&
               randHorse.contact.email.$t && (
-                <p>Email: {randHorse.contact.email.$t}</p>
+                <p>{randHorse.contact.email.$t}</p>
               )}
 
             {randHorse &&
@@ -102,11 +102,11 @@ class PetFinderHorse extends Component {
               randHorse.contact.city.$t &&
               randHorse.contact.state.$t && (
                 <p>
-                  Location: {randHorse.contact.city.$t},{" "}
+                  {randHorse.contact.city.$t},{" "}
                   {randHorse.contact.state.$t}
                 </p>
               )}
-              
+
           </div>
         </div>
       </div>

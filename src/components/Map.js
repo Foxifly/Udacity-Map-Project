@@ -18,7 +18,7 @@ const GMap = compose(
   withGoogleMap
 )(props => (
   <GoogleMap
-    defaultZoom={11}
+    defaultZoom={9}
     defaultCenter={{ lat: 37.7749, lng: -122.4194 }}
     center={{ lat: props.latitude, lng: props.longitude }}
   >
@@ -31,7 +31,7 @@ const GMap = compose(
 ));
 
 //The map component that passes the state into the gMap component to display the map at the user's location.
-class Map extends Component { 
+class Map extends Component {
   state = {
     latitude: 30,
     longitude: -30,

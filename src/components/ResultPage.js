@@ -17,12 +17,12 @@ class ResultPage extends Component {
   return (
     <div className="app">
     <BackButton/>
-    <ResultFocus
-    resultClicked={resultClicked}
-    />
     <Results
     handleCurrBusiness={handleCurrBusiness}
     results={results}
+    />
+    <ResultFocus
+    resultClicked={resultClicked}
     />
     </div>
 

@@ -3,6 +3,7 @@ import "./App.css";
 import Base from "./components/Base";
 import MainPage from "./components/MainPage";
 import ResultPage from "./components/ResultPage";
+import Footer from "./components/Footer";
 import * as YelpAPI from "./util/YelpAPI.js";
 import * as HereAPI from "./util/HereAPI.js";
 import * as PetFinder from "./util/PetfinderAPI.js";
@@ -156,6 +157,7 @@ class App extends Component {
             );
           }}
         />
+        <Footer/>
       </div>
     );
   }

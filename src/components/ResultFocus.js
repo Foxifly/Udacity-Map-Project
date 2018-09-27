@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
+import notFound from "../icons/Image_Not_Found.jpg";
 //This component will display on a specific business screen. (once one is selected)
 class ResultFocus extends Component {
 
 
   render () {
+
       const { resultClicked} = this.props;
-console.log(resultClicked)
+      let url;
+      if (resultClicked.image_url) {
+        url = resultClicked.image_url;
+      } else {
+        url = notFound;
+      }
         return (
           <div className="result-featured">
           {resultClicked && resultClicked.location &&
             <div className="result-featured-container">
             <div className="result-featured-image">
-            <img alt={resultClicked.name} className="shrink-image" src={resultClicked.image_url}></img>
+            <img alt={resultClicked.name} className="shrink-image" src={url}></img>
             </div>
             <div className="result-featured-text">
             <h3>{resultClicked.name}</h3>
