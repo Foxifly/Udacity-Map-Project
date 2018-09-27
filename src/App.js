@@ -51,11 +51,12 @@ class App extends Component {
       ).then(results => {
         if (results === "Error") {
           this.setState({ results: "Error" });
+        } else {
+          this.setState({ results: results, resultClicked: results[0] })
         }
-        this.setState({ results: results, resultClicked: results[0] });
-      });
     });
-  }
+  })
+}
 
   searchLocation(toSearch, category, keyword) {
     HereAPI.searchForLocation(toSearch).then(result => {
@@ -144,6 +145,7 @@ class App extends Component {
             return (
               <div>
                 <ResultPage
+                  reviews={this.state.reviews}
                   handleCurrBusiness={this.handleCurrBusiness}
                   resultClicked={this.state.resultClicked}
                   results={this.state.results}

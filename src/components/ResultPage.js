@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import BackButton from "./BackButton";
 
 //This component will display on a specific business screen. (once one is selected)
-class MainPage extends Component {
+class ResultPage extends Component {
   static propTypes = {
     results: PropTypes.array.isRequired,
     latitude: PropTypes.number.isRequired,
@@ -13,7 +13,7 @@ class MainPage extends Component {
   };
 
   render () {
-      const { results, resultClicked, handleCurrBusiness } = this.props;
+      const { results, resultClicked, handleCurrBusiness} = this.props;
   return (
     <div className="app">
     <BackButton/>
@@ -32,4 +32,4 @@ class MainPage extends Component {
 
 }
 
-export default MainPage;
+export default ResultPage;

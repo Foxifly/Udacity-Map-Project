@@ -96,7 +96,7 @@ h4 {
   background-size: 25px 25px;
 }
 .search-button,
-select, button, .more-info{
+select, button, .more-info, .yelp-button{
   text-decoration: none;
   font: bold 18px 'Unica One', cursive;
   border: 1px solid white;
@@ -111,7 +111,7 @@ select, button, .more-info{
   transition: ease 0.3s;
 }
 
-.more-info {
+.more-info, .yelp-button {
   border-radius: 5px;
   padding: 5px 20px!important;
 }
@@ -124,7 +124,7 @@ select {
 
 .search-button:hover,
 .filter-button:hover,
-button:hover, .more-info:hover {
+button:hover, .more-info:hover, .yelp-button:hover {
   cursor: pointer;
   background-color: #b35c5e;
 }
@@ -236,4 +236,35 @@ font: 42px'Unica One', cursive;
   border: 2px solid white;
   border-radius: 50px;
   text-align: center;
+}
+
+.result-featured {
+    background-color: black;
+    padding: 20px 0;
+}
+
+.result-featured-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.result-featured-text {
+  text-align: center;
+}
+.result-featured-text,
+.result-featured-image {
+  width: 50%;
+}
+
+.shrink-image {
+  width: 90%;
+  height: auto;
+}
+.button-container{
+  margin-top: 10px;
 }
