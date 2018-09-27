@@ -13,7 +13,8 @@ class MapMarker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      animation: '4'
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -23,6 +24,15 @@ class MapMarker extends Component {
     this.setState(state => ({
       open: !this.state.open
     }));
+    if (this.state.open) {
+      this.setState({
+        animation: '1'
+      })
+    } else {
+      this.setState({
+        animation: '4'
+      })
+    }
   }
 
   //The render method for the markers takes each result and inserts a mapmarker at those coordinates. If the marker is clicked, the info window will appear and display brief info about the location. Clicking the marker will also display detained info about the venue.
@@ -31,12 +41,13 @@ class MapMarker extends Component {
     return (
       <div>
         <Marker
+          animation={this.state.animation}
           onClick={this.handleClick}
           position={{
             lat: result.coordinates.latitude,
             lng: result.coordinates.longitude
           }}
-      
+
         >
 
           {this.state.open && (

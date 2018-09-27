@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Base from "./components/Base";
 import MainPage from "./components/MainPage";
-import ResultPage from "./components/ResultPage"
+import ResultPage from "./components/ResultPage";
 import * as YelpAPI from "./util/YelpAPI.js";
 import * as HereAPI from "./util/HereAPI.js";
 import * as PetFinder from "./util/PetfinderAPI.js";
 import { Route } from "react-router-dom";
-
 
 /* import { Link } from "react-router-dom";
 <Link className="close-search" to="/">
@@ -22,19 +22,18 @@ class App extends Component {
       latitude: 37.7749,
       longitude: -122.4194,
       resultClicked: []
-      }
+    };
     this.searchLocation = this.searchLocation.bind(this);
     this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
     this.handleCurrBusiness = this.handleCurrBusiness.bind(this);
   }
 
   componentWillMount() {
-      PetFinder.petRandom().then((randHorse)=> {
-        this.setState({randHorse })
-      })
-      this.locateUser();
-    }
-
+    PetFinder.petRandom().then(randHorse => {
+      this.setState({ randHorse });
+    });
+    this.locateUser();
+  }
 
   //To stop too many YELP requests, we will only load horse riding when a user first visits the site.
   locateUser() {
@@ -43,49 +42,75 @@ class App extends Component {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
       });
-      YelpAPI.search("horse_riding" ,"horseriding", this.state.latitude, this.state.longitude, "best_match").then((results) => {
-        console.log(results);
+      YelpAPI.search(
+        "horse_riding",
+        "horseriding",
+        this.state.latitude,
+        this.state.longitude,
+        "best_match"
+      ).then(results => {
         if (results === "Error") {
-          this.setState({results: "Error"})
+          this.setState({ results: "Error" });
         }
-        this.setState({results})
+        this.setState({ results: results, resultClicked: results[0] });
       });
     });
   }
 
   searchLocation(toSearch, category, keyword) {
-    HereAPI.searchForLocation(toSearch).then((result) => {
+    HereAPI.searchForLocation(toSearch).then(result => {
       if (result) {
-        this.setState({
-          latitude: result.latitude,
-          longitude: result.longitude
-        }, function(c) {
-          this.getNewSearchTopic(keyword, category, this.state.latitude, this.state.longitude, "best_match");
-        })
+        this.setState(
+          {
+            latitude: result.latitude,
+            longitude: result.longitude
+          },
+          function(c) {
+            this.getNewSearchTopic(
+              keyword,
+              category,
+              this.state.latitude,
+              this.state.longitude,
+              "best_match"
+            );
+          }
+        );
       }
-
-    })
+    });
   }
 
   searchCurrentLocation(toSearch, category, keyword) {
-          this.getNewSearchTopic(keyword, category, this.state.latitude, this.state.longitude, "best_match");
-
+    this.getNewSearchTopic(
+      keyword,
+      category,
+      this.state.latitude,
+      this.state.longitude,
+      "best_match"
+    );
   }
   getNewSearchTopic = (keyword, category, latitude, longitude, sort) => {
-    YelpAPI.search(keyword, category, latitude, longitude, sort).then((results) => {
-      this.setState({results})
-    });
-  }
+    YelpAPI.search(keyword, category, latitude, longitude, sort).then(
+      results => {
+        this.setState({ results });
+      }
+    );
+  };
   handleCurrBusiness(currClicked) {
     this.setState({
       resultClicked: currClicked
-    })
+    });
   }
 
   render() {
     return (
       <div>
-
+        <Base
+          searchLocation={this.searchLocation}
+          searchCurrentLocation={this.searchCurrentLocation}
+          results={this.state.results}
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
+        />
 
         <Route
           exact
@@ -97,13 +122,13 @@ class App extends Component {
                   <div>
                     {
                       <MainPage
-                      searchLocation={this.searchLocation}
-                      searchCurrentLocation={this.searchCurrentLocation}
-                      randHorse={this.state.randHorse}
-                      results={this.state.results}
-                      latitude={this.state.latitude}
-                      longitude={this.state.longitude}
-                      handleCurrBusiness={this.handleCurrBusiness}
+                        searchLocation={this.searchLocation}
+                        searchCurrentLocation={this.searchCurrentLocation}
+                        randHorse={this.state.randHorse}
+                        results={this.state.results}
+                        latitude={this.state.latitude}
+                        longitude={this.state.longitude}
+                        handleCurrBusiness={this.handleCurrBusiness}
                       />
                     }
                   </div>
@@ -115,18 +140,16 @@ class App extends Component {
 
         <Route
           path="/info"
-          render={( {history}) => {
+          render={({ history }) => {
             return (
               <div>
-              <ResultPage
-              handleCurrBusiness={this.handleCurrBusiness}
-              resultClicked={this.state.resultClicked}
-              searchLocation={this.searchLocation}
-              searchCurrentLocation={this.searchCurrentLocation}
-              results={this.state.results}
-              latitude={this.state.latitude}
-              longitude={this.state.longitude}
-              />
+                <ResultPage
+                  handleCurrBusiness={this.handleCurrBusiness}
+                  resultClicked={this.state.resultClicked}
+                  results={this.state.results}
+                  latitude={this.state.latitude}
+                  longitude={this.state.longitude}
+                />
               </div>
             );
           }}
