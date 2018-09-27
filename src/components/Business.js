@@ -1,12 +1,27 @@
 import React, { Component } from "react";
 import notFound from "../icons/Image_Not_Found.jpg";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
 class Business extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currBusiness: []
+    }
+    this.handleResult = this.handleResult.bind(this);
+  }
   //Declaring the proptypes of the Business Component.
   static propTypes = {
     business: PropTypes.object.isRequired
   };
+
+  handleResult() {
+    this.setState({
+      currBusiness: this.props.business
+    })
+    this.props.handleCurrBusiness(this.props.business)
+  }
 
   //The render method that takes the business data from the Yelp API and generates a info box for each business. If the Business has a yelp image that isn't defined, this block also replaces that image with a placeholder. Yelp does not have anything listed as undefined, only empty strings.
   render() {
@@ -39,7 +54,9 @@ class Business extends Component {
           </p>
         </div>
         <div className="button-container">
-          <button className="more-info">More Info</button>
+        <Link onClick={this.handleResult} to="/info"
+        className="more-info"
+        >More Info</Link>
         </div>
       </li>
     );

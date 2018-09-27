@@ -30,7 +30,7 @@ div {
 }
 
 .main-header {
-  background-color: #640D14;
+  background-color: #35363B;
   padding: 10px 0;
 }
 h1, h2, h3, h4, p {
@@ -96,7 +96,8 @@ h4 {
   background-size: 25px 25px;
 }
 .search-button,
-select, button{
+select, button, .more-info{
+  text-decoration: none;
   font: bold 18px 'Unica One', cursive;
   border: 1px solid white;
   border-radius: 2px;
@@ -109,13 +110,21 @@ select, button{
   width: 100px;
   transition: ease 0.3s;
 }
+
+.more-info {
+  border-radius: 5px;
+  padding: 5px 20px!important;
+}
+.button-container {
+  padding-top: 10px;
+}
 select {
   width: 200px;
 }
 
 .search-button:hover,
 .filter-button:hover,
-button:hover {
+button:hover, .more-info:hover {
   cursor: pointer;
   background-color: #b35c5e;
 }
@@ -212,4 +221,19 @@ grid-area: description;
 }
 .contact-container{
 grid-area: contact;
+}
+
+.go-back::before {
+  top: 18px;
+  left: 18px;
+color: white;
+content: "<";
+font: 42px'Unica One', cursive;
+  position: absolute;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 50px;
+  text-align: center;
 }

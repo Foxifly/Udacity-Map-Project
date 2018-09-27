@@ -26,7 +26,8 @@ class MainPage extends Component {
       results,
       randHorse,
       searchLocation,
-      searchCurrentLocation
+      searchCurrentLocation,
+      handleCurrBusiness
     } = this.props;
     return (
       <div className="app">
@@ -40,7 +41,7 @@ class MainPage extends Component {
 
         <Map results={results} latitude={latitude} longitude={longitude} />
 
-        <Results results={results} />
+        <Results results={results} handleCurrBusiness={handleCurrBusiness} />
 
         <PetFinderHorse randHorse={randHorse} />
       </div>

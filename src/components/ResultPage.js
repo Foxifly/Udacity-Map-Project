@@ -4,6 +4,7 @@ import MainHeading from "./MainHeading";
 import Results from "./Results";
 import ResultFocus from "./ResultFocus";
 import PropTypes from 'prop-types';
+import BackButton from "./BackButton";
 
 //This component will display on a specific business screen. (once one is selected)
 class MainPage extends Component {
@@ -14,19 +15,21 @@ class MainPage extends Component {
   };
 
   render () {
-      const { latitude, longitude, results } = this.props;
+      const { latitude, longitude, results, resultClicked, handleCurrBusiness } = this.props;
   return (
     <div className="app">
     <MainHeading/>
+    <BackButton/>
     <Map
     results={results}
     latitude={latitude}
     longitude={longitude}
     />
     <ResultFocus
-
+    resultClicked={resultClicked}
     />
     <Results
+    handleCurrBusiness={handleCurrBusiness}
     results={results}
     />
     </div>

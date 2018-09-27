@@ -3,13 +3,13 @@ import Business from "./Business";
 import PropTypes from "prop-types";
 
 class Results extends Component {
-  //Only prop required here is the result array. 
+  //Only prop required here is the result array.
   static propTypes = {
     results: PropTypes.array.isRequired
   };
 
   render() {
-    const { results } = this.props;
+    const { results, handleCurrBusiness } = this.props;
     //Displays the result grid
     return (
       <div className="results">
@@ -24,7 +24,7 @@ class Results extends Component {
             {results &&
               results !== "Error" &&
               results.map(result => {
-                return <Business key={result.id} business={result} />;
+                return <Business key={result.id} business={result} handleCurrBusiness={handleCurrBusiness} />;
               })}
           </ol>
         </div>

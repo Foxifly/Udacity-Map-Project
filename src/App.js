@@ -12,7 +12,7 @@ import { Route } from "react-router-dom";
 <Link className="close-search" to="/">
   Close
 </Link>
-*/ 
+*/
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,10 +20,12 @@ class App extends Component {
       results: [],
       randHorse: {},
       latitude: 37.7749,
-      longitude: -122.4194
+      longitude: -122.4194,
+      resultClicked: []
       }
     this.searchLocation = this.searchLocation.bind(this);
     this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
+    this.handleCurrBusiness = this.handleCurrBusiness.bind(this);
   }
 
   componentWillMount() {
@@ -74,6 +76,11 @@ class App extends Component {
       this.setState({results})
     });
   }
+  handleCurrBusiness(currClicked) {
+    this.setState({
+      resultClicked: currClicked
+    })
+  }
 
   render() {
     return (
@@ -96,6 +103,7 @@ class App extends Component {
                       results={this.state.results}
                       latitude={this.state.latitude}
                       longitude={this.state.longitude}
+                      handleCurrBusiness={this.handleCurrBusiness}
                       />
                     }
                   </div>
@@ -111,6 +119,8 @@ class App extends Component {
             return (
               <div>
               <ResultPage
+              handleCurrBusiness={this.handleCurrBusiness}
+              resultClicked={this.state.resultClicked}
               searchLocation={this.searchLocation}
               searchCurrentLocation={this.searchCurrentLocation}
               results={this.state.results}

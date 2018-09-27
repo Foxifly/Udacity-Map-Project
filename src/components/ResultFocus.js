@@ -4,10 +4,10 @@ class ResultFocus extends Component {
 
 
   render () {
-      const { latitude, longitude, results } = this.props;
+      const { resultClicked } = this.props;
   return (
     <div className="app">
-    RESULT
+    {JSON.stringify(resultClicked)}
     </div>
 
   )
