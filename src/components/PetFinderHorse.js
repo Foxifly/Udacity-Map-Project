@@ -27,9 +27,9 @@ class PetFinderHorse extends Component {
     }
     let description="";
 
-    if (randHorse && randHorse.description && randHorse.description.$t.length > 10) {
+    if (randHorse && randHorse.description && randHorse.description.$t && randHorse.description.$t.length > 20) {
       description = randHorse.description.$t;
-    } else if (randHorse && randHorse.description && randHorse.description.$t.length <= 10) {
+    } else if (randHorse && randHorse.description && randHorse.description.$t  && randHorse.description.$t.length <= 20) {
       description = "No description is available for this horse for adoption. Please contact the rescue for more information."
     } else if (!randHorse.description) {
         description = "Loading PetFinder horse for adoption..."

@@ -23,10 +23,21 @@ const GMap = compose(
     center={{ lat: props.latitude, lng: props.longitude }}
   >
     {props.results &&
-      props.results !== "Error" &&
+      props.results !== "Error" && !props.currClicked &&
       props.results.map(result => {
         return <MapMarker key={result.id} result={result} />;
       })}
+
+      {props.results &&
+        props.results !== "Error" && props.currClicked &&
+        props.results.map(result => {
+          if (props.currClicked !== result.id) {
+            return <MapMarker key={result.id} result={result} isClicked={false} />;
+          } else {
+            return <MapMarker key={result.id} result={result} isClicked={true} />;
+          }
+
+        })}
   </GoogleMap>
 ));
 
@@ -35,14 +46,16 @@ class Map extends Component {
   state = {
     latitude: 30,
     longitude: -30,
-    results: []
+    results: [],
+    currClickedID: null
   };
 
   //Waits for the component to mount, then sets the state of the latitude and longitude
   componentDidMount() {
     this.setState({
       latitude: this.props.latitude,
-      longitude: this.props.longitude
+      longitude: this.props.longitude,
+      currClickedID: this.props.currClickedID
     });
   }
 
@@ -52,7 +65,8 @@ class Map extends Component {
       this.setState({
         latitude: nextProps.latitude,
         longitude: nextProps.longitude,
-        results: nextProps.results
+        results: nextProps.results,
+        currClickedID: nextProps.currClickedID
       });
     }
   }
@@ -64,6 +78,7 @@ class Map extends Component {
         results={this.state.results}
         latitude={this.state.latitude}
         longitude={this.state.longitude}
+        currClicked={this.state.currClickedID}
       />
     );
   }

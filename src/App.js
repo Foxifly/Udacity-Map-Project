@@ -23,7 +23,8 @@ class App extends Component {
       latitude: 37.7749,
       longitude: -122.4194,
       resultClicked: [],
-      isLocationError: false
+      isLocationError: false,
+      currClickedID: null
     };
     this.searchLocation = this.searchLocation.bind(this);
     this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
@@ -54,8 +55,8 @@ class App extends Component {
       ).then(results => {
         if (results === "Error") {
           this.setState({ results: "Error" });
-        } else {
-          this.setState({ results: results, resultClicked: results[0] })
+        } else if (results[0]){
+          this.setState({ results: results, resultClicked: results[0], currClickedID: results[0].id })
         }
     });
   })
@@ -108,8 +109,10 @@ class App extends Component {
   };
   handleCurrBusiness(currClicked) {
     this.setState({
-      resultClicked: currClicked
+      resultClicked: currClicked,
+      currClickedID: currClicked.id
     });
+
   }
 
   updateLocationBool() {
@@ -118,10 +121,13 @@ class App extends Component {
     })
   }
 
+
+
   render() {
     return (
       <div>
         <Base
+          currClickedID={this.state.currClickedID}
           isLocationError={this.state.isLocationError}
           updateLocationBool={this.updateLocationBool}
           searchLocation={this.searchLocation}

@@ -35,6 +35,24 @@ class MapMarker extends Component {
     }
   }
 
+  componentWillUpdate(nextProps) {
+    console.log(nextProps.isClicked, this.props.isClicked)
+    if (nextProps.isClicked !== this.props.isClicked) {
+      if (nextProps.isClicked) {
+        this.setState({
+          animation: '1',
+          open: true
+        });
+      } else {
+        this.setState({
+          animation: '4',
+          open: false
+        });
+      }
+
+    }
+  }
+
   //The render method for the markers takes each result and inserts a mapmarker at those coordinates. If the marker is clicked, the info window will appear and display brief info about the location. Clicking the marker will also display detained info about the venue.
   render() {
     const { result } = this.props;

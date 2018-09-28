@@ -9,7 +9,7 @@ class Results extends Component {
   };
 
   render() {
-    const { results, handleCurrBusiness } = this.props;
+    const { results, handleCurrBusiness} = this.props;
     //Displays the result grid
     return (
       <div className="results">
