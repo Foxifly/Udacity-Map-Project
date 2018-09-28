@@ -342,3 +342,28 @@ li {
 .footer-link {
   color: #bdbdbe;
 }
+
+.location-modal {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 3000;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  top:0;
+}
+.location-modal-content {
+  text-align: center;
+  background-color: rgba(53,54,59, 0.9);
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.invalid-input, .invalid-input-button {
+margin-top: 20px;
+}

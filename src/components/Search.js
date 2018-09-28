@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Search extends Component {
 
-  //needed to bind these functions or else this will be undefined. 
+  //needed to bind these functions or else this will be undefined.
   constructor(props) {
     super(props);
     this.state = { value: "", filter: "", topic: "" };
@@ -47,6 +47,8 @@ class Search extends Component {
     this.setState({ value: event.target.value });
   }
 
+
+
   // assign a search query for the yelp api call.
   handleFilterChange(selection) {
     this.setState({ filter: selection }, function(c) {
@@ -70,7 +72,16 @@ class Search extends Component {
 
 //Loads the search bar.
   render() {
+  const {isLocationError, updateLocationBool} = this.props;
     return (
+      <div>
+      {isLocationError &&
+      <div className="location-modal">
+      <div className="location-modal-content"><h3>ERROR</h3>
+      <p className="invalid-input"> You have entered an invalid location. Please try again using a differen location.</p>
+      <button className="invalid-input-button" onClick={updateLocationBool}> Close</button>
+      </div></div>
+    }
       <form onSubmit={this.handleSubmit} className="search-container">
         <div className="search-wrapper">
           <input
@@ -101,6 +112,7 @@ class Search extends Component {
           <button className="search-button">Search</button>
         </div>
       </form>
+      </div>
     );
   }
 }

@@ -8,6 +8,6 @@ export const searchForLocation = (searchText) => {
         let longitude = jsonResponse.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
         return {latitude, longitude};
       }).catch((err)=> {
-        console.log("Error " + err);
+        return "Error"
       });
     }

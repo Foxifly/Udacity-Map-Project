@@ -22,11 +22,13 @@ class App extends Component {
       randHorse: {},
       latitude: 37.7749,
       longitude: -122.4194,
-      resultClicked: []
+      resultClicked: [],
+      isLocationError: false
     };
     this.searchLocation = this.searchLocation.bind(this);
     this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
     this.handleCurrBusiness = this.handleCurrBusiness.bind(this);
+    this.updateLocationBool = this.updateLocationBool.bind(this);
   }
 
   componentWillMount() {
@@ -61,9 +63,14 @@ class App extends Component {
 
   searchLocation(toSearch, category, keyword) {
     HereAPI.searchForLocation(toSearch).then(result => {
-      if (result) {
+      this.setState(
+        {
+          isLocationError: false
+        })
+      if (result && result !== "Error") {
         this.setState(
           {
+            isLocationError: false,
             latitude: result.latitude,
             longitude: result.longitude
           },
@@ -77,6 +84,8 @@ class App extends Component {
             );
           }
         );
+      } else if (result === "Error") {
+        this.setState({isLocationError: true})
       }
     });
   }
@@ -103,10 +112,18 @@ class App extends Component {
     });
   }
 
+  updateLocationBool() {
+    this.setState({
+      isLocationError: false
+    })
+  }
+
   render() {
     return (
       <div>
         <Base
+          isLocationError={this.state.isLocationError}
+          updateLocationBool={this.updateLocationBool}
           searchLocation={this.searchLocation}
           searchCurrentLocation={this.searchCurrentLocation}
           results={this.state.results}
@@ -146,7 +163,6 @@ class App extends Component {
             return (
               <div>
                 <ResultPage
-                  reviews={this.state.reviews}
                   handleCurrBusiness={this.handleCurrBusiness}
                   resultClicked={this.state.resultClicked}
                   results={this.state.results}

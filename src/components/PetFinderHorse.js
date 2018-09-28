@@ -25,6 +25,15 @@ class PetFinderHorse extends Component {
         return (breedString += breed.$t + ", ");
       });
     }
+    let description="";
+
+    if (randHorse && randHorse.description && randHorse.description.$t.length > 10) {
+      description = randHorse.description.$t;
+    } else if (randHorse && randHorse.description && randHorse.description.$t.length <= 10) {
+      description = "No description is available for this horse for adoption. Please contact the rescue for more information."
+    } else if (!randHorse.description) {
+        description = "Loading PetFinder horse for adoption..."
+    }
 
     //Each object ruturns multiple images, this grabs an image from the larger filetypes, and displays it.
     if (
@@ -78,10 +87,8 @@ class PetFinderHorse extends Component {
           </div>
 
           <div className="description-container">
-            {randHorse &&
-              randHorse.description && (
-                <p>{randHorse.description.$t}</p>
-              )}
+            {description &&
+                <p>{description}</p>}
           </div>
 
           <div className="contact-container">
