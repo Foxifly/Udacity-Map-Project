@@ -1,10 +1,13 @@
 import React from "react";
 
-//Stateless component - Main heading. Spreadable across all pages. No props, state, etc.
+/**
+ * @description Stateless Footer displays the footer at the bottom of the page.
+ * @returns {HTML} Returns the HTML for the footer element. 
+ */
 function Footer(props) {
   return (
-    <footer className="footer">
-      <p>
+    <footer aria-describedby="footer-text" className="footer">
+      <p id="footer-text">
         {" "}
         Powered by{" "}
         <a

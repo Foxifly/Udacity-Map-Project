@@ -4,19 +4,29 @@ import MainHeading from "./MainHeading";
 import Search from "./Search";
 import PropTypes from "prop-types";
 
-//The main page component pulls in all the components to display them together on App.js.
+/**
+ * @description The main page component pulls in all main the components to display them together on App.js. These components are the same between all routes.
+ */
 class Base extends Component {
-  //Declaring proptypes for the main page component.
+  /**
+   * @description Declaring proptypes for the main page component.
+   */
   static propTypes = {
     results: PropTypes.array.isRequired,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
     searchLocation: PropTypes.func.isRequired,
-    searchCurrentLocation: PropTypes.func.isRequired
+    searchCurrentLocation: PropTypes.func.isRequired,
+    isLocationError: PropTypes.bool.isRequired,
+    updateBool: PropTypes.func.isRequired,
+    currClickedID: PropTypes.string,
   };
 
-  //The render method renders the main heading and footer, the search bar, the map, the results, and the petfinder horse.
+  /**
+   * @description The render method of this component renders the main heading and footer, the search bar, the map, the results, and the petfinder horse. All of these sub-components stay consistent throughout all routes.
+   */
   render() {
+
     const {
       latitude,
       longitude,
@@ -27,8 +37,9 @@ class Base extends Component {
       updateBool,
       currClickedID
     } = this.props;
+
     return (
-      <div className="app">
+      <div aria-labelledby="main-header">
 
         <MainHeading />
 
@@ -39,13 +50,16 @@ class Base extends Component {
           updateBool={updateBool}
         />
 
-        <Map currClickedID={currClickedID} results={results} latitude={latitude} longitude={longitude} />
+        <Map
+          currClickedID={currClickedID}
+          results={results}
+          latitude={latitude}
+          longitude={longitude}
+        />
 
       </div>
     );
   }
-
 }
-
 
 export default Base;

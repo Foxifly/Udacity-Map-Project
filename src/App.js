@@ -163,7 +163,6 @@ class App extends Component {
 
   /**
    * @description Negates the state of isLocationError, isYelpError to make the modal close.
-   * TODO: Edit this to take an arg and combine this with yelpBool.
    */
   updateBool(boolType) {
     switch (boolType) {
@@ -181,8 +180,6 @@ class App extends Component {
       break;
     }
   }
-
-
 
   /**
    * @description The rendering of all the components and routes: Base, MainPage, ResultPage and Footer.
