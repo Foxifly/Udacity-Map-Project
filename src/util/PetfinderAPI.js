@@ -15,12 +15,11 @@ export const petRandom = () => {
         return response.json();
       })
       .then(jsonResponse => {
-        console.log(jsonResponse);
         if (jsonResponse.petfinder) {
 
           return jsonResponse.petfinder.pet;
         }
       }).catch((err)=> {
-        console.log(err);
+        return "Error";
       });
     }

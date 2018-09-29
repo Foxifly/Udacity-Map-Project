@@ -59,6 +59,7 @@ class ResultFocus extends Component {
                 <p aria-label="phone number">{resultClicked.display_phone}</p>
                 <div role="button" className="button-container">
                   <a
+                    autofocus="true"
                     className="yelp-button"
                     target="_blank"
                     href={resultClicked.url}

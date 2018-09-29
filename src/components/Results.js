@@ -39,7 +39,7 @@ class Results extends Component {
               <div className="location-modal">
               <div className="location-modal-content"><h3>ERROR</h3>
               <p className="invalid-input">We are having trouble accessing the Yelp API. Please try again later.</p>
-              <button className="invalid-input-button" onClick={this.handleBoolChange}> Close</button>
+              <button autofocus="true" className="invalid-input-button" onClick={this.handleBoolChange}> Close</button>
               </div></div>
             }
 

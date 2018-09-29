@@ -342,19 +342,27 @@ R E S U L T
   width: 50%;
 }
 
+@media screen and (max-width: 765px) {
+  .result-featured-text{
+    width: 90%;
+  }
+
+  .result-featured-image  {
+    width: 100%;
+  }
+}
 
 /*
 G O
 B A C K
 B U T T O N
 */
-
 .go-back::before {
   top: 18px;
   left: 18px;
   color: white;
   content: "<";
-  font: 42px'Unica One', cursive;
+  font: 42px 'Unica One', cursive;
   position: absolute;
   z-index: 1000;
   width: 50px;
@@ -364,6 +372,13 @@ B U T T O N
   text-align: center;
 }
 
+@media screen and (max-width: 535px) {
+  .go-back::before {
+  top: 250px;
+  color: black;
+  border: 2px solid black;
+}
+}
 
 /*
 M O D A L

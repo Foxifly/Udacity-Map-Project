@@ -45,7 +45,6 @@ class MapMarker extends Component {
    * @param nextProps once the component updates, it passes nextprops which is a (perhaps) new value for the props passed.
    */
   componentWillUpdate(nextProps) {
-    console.log(nextProps.isClicked, this.props.isClicked)
     if (nextProps.isClicked !== this.props.isClicked) {
       if (nextProps.isClicked) {
         this.setState({

@@ -18,9 +18,7 @@ class Search extends Component {
    * @description When "Search" is clicked, search the location with the searchLocation function props.
    */
   handleSubmit = event => {
-    console.log(this.state);
     event.preventDefault();
-    console.log(this.state);
     if (this.state.filter && this.state.value) {
       this.props.searchLocation(
         this.state.value,
@@ -32,7 +30,6 @@ class Search extends Component {
        * @description if the select box hasn't been changed, search with the filter horseriding by default.
        */
     } else if (this.state.value) {
-      console.log(this.state);
       this.setState({ filter: "horseriding" });
       this.props.searchLocation(
         this.state.value,
@@ -101,7 +98,7 @@ class Search extends Component {
       <div aria-hidden={isLocationError} className="location-modal">
       <div aria-labelledby="error" aria-describedby="invalid-input" className="location-modal-content"><h3 id="error">ERROR</h3>
       <p id="invalid-input" className="invalid-input">{"You have entered an invalid location. Please try again using a differen location."}</p>
-      <button className="invalid-input-button" onClick={this.handleBoolChange}>Close</button>
+      <button autofocus="true"  className="invalid-input-button" onClick={this.handleBoolChange}>Close</button>
       </div></div>
     }
       <form onSubmit={this.handleSubmit} className="search-container">
