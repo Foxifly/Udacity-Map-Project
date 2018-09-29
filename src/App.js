@@ -26,6 +26,7 @@ class App extends Component {
       currClickedID: null,
       isYelpError: false
     };
+    this.locateUser = this.locateUser.bind(this)
     this.searchLocation = this.searchLocation.bind(this);
     this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
     this.handleCurrBusiness = this.handleCurrBusiness.bind(this);
@@ -46,6 +47,7 @@ class App extends Component {
    * @description Asks the end user if the app can use their current location. If it's allowed, it will set the location and query yelp.
    */
   locateUser() {
+    let self = this;
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         longitude: position.coords.longitude,
@@ -78,7 +80,29 @@ class App extends Component {
           });
         }
       });
-    });
+    },
+  function(error) {
+    if (error) {
+      //fallback coordinates
+      YelpAPI.search(
+        "horse_riding",
+        "horseriding",
+        self.state.latitude,
+        self.state.longitude,
+        "best_match"
+      ).then(results => {
+        if (results === "Error") {
+          self.setState({ results: "Error", isYelpError: true });
+        } else if (results && results[0]) {
+          self.setState({
+            results: results,
+            resultClicked: results[0],
+            currClickedID: results[0].id
+          });
+        }
+      });
+    }
+  });
   }
 
   /**
