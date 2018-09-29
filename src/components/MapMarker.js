@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 const { Marker, InfoWindow } = require("react-google-maps");
 
-
-//Displays all the markers on the generated googlemap.
+/**
+ * @description  Displays all the markers on the generated googlemap.
+ */
 class MapMarker extends Component {
   static propTypes = {
     result: PropTypes.object.isRequired
   };
 
-  //Need to bind handleClick with this otherwise this will be undefined.
+  /**
+   * @description  Binds the click to handleClick and manages state.
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +22,9 @@ class MapMarker extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  //The handleClick method runs when the marker has been clicked - it opens/closes the info window.
+  /**
+   * @description  The handleClick method runs when the marker has been clicked - it opens/closes the info window.
+   */
   handleClick() {
     this.setState(state => ({
       open: !this.state.open
@@ -35,6 +40,10 @@ class MapMarker extends Component {
     }
   }
 
+  /**
+   * @description Monitors the state on every prop update. if they differ, this will force the markers to update to the lat and long / results.
+   * @param nextProps once the component updates, it passes nextprops which is a (perhaps) new value for the props passed.
+   */
   componentWillUpdate(nextProps) {
     console.log(nextProps.isClicked, this.props.isClicked)
     if (nextProps.isClicked !== this.props.isClicked) {
@@ -53,11 +62,15 @@ class MapMarker extends Component {
     }
   }
 
-  //The render method for the markers takes each result and inserts a mapmarker at those coordinates. If the marker is clicked, the info window will appear and display brief info about the location. Clicking the marker will also display detained info about the venue.
+  /**
+   * @description Monitors the state on every prop update. if they differ, this will force the markers to update to the lat and long / results.
+   * @returns the HTML markup for the markers and info windows.
+   */
   render() {
     const { result } = this.props;
     return (
-      <div>
+
+      <div tabIndex="-1">
         <Marker
           animation={this.state.animation}
           onClick={this.handleClick}
@@ -65,12 +78,11 @@ class MapMarker extends Component {
             lat: result.coordinates.latitude,
             lng: result.coordinates.longitude
           }}
-
         >
 
           {this.state.open && (
             <InfoWindow onCloseClick={this.handleClick}>
-              <div>
+              <div aria-hidden={!this.state.open} tabIndex="-1">
                 <strong>{result.name}</strong>
                 <br /> <br />
                 {result.location.address1}

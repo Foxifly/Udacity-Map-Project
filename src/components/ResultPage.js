@@ -15,7 +15,8 @@ class ResultPage extends Component {
   render () {
       const { results, resultClicked, handleCurrBusiness, isYelpError, updateYelpBool} = this.props;
   return (
-    <div className="app">
+
+    <div>
     <BackButton/>
     <ResultFocus
     resultClicked={resultClicked}

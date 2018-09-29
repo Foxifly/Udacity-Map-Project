@@ -1,20 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-
 class PetFinderHorse extends Component {
-
-  //randHorse prop is the only thing required to generate the horse profile.
+  /**
+   * @description randHorse prop is the only thing required to generate the horse profile.
+   */
   static propTypes = {
     randHorse: PropTypes.object.isRequired
   };
 
+  /**
+   * @description Displays the Opt to Adopt section of the main page.
+   * @returns {HTML} Returns a random horse for adoption.
+   */
   render() {
     const { randHorse } = this.props;
     let breedString = "";
     let horseImage = "";
 
-    //If there are more than one horse breed, then they will all be listed.
+    /**
+     * @description If there are more than one horse breed, then they will all be listed.
+     */
     if (
       randHorse &&
       randHorse.breeds &&
@@ -25,17 +31,30 @@ class PetFinderHorse extends Component {
         return (breedString += breed.$t + ", ");
       });
     }
-    let description="";
 
-    if (randHorse && randHorse.description && randHorse.description.$t && randHorse.description.$t.length > 20) {
+    let description = "";
+    if (
+      randHorse &&
+      randHorse.description &&
+      randHorse.description.$t &&
+      randHorse.description.$t.length > 20
+    ) {
       description = randHorse.description.$t;
-    } else if (randHorse && randHorse.description && randHorse.description.$t  && randHorse.description.$t.length <= 20) {
-      description = "No description is available for this horse for adoption. Please contact the rescue for more information."
+    } else if (
+      randHorse &&
+      randHorse.description &&
+      randHorse.description.$t &&
+      randHorse.description.$t.length <= 20
+    ) {
+      description =
+        "No description is available for this horse for adoption. Please contact the rescue for more information.";
     } else if (!randHorse || !randHorse.description) {
-        description = "Loading PetFinder horse for adoption..."
+      description = "Loading PetFinder horse for adoption...";
     }
 
-    //Each object ruturns multiple images, this grabs an image from the larger filetypes, and displays it.
+    /**
+     * @description Each object ruturns multiple images, this grabs an image from the larger filetypes, and displays it.
+     */
     if (
       randHorse &&
       randHorse.media &&
@@ -52,19 +71,21 @@ class PetFinderHorse extends Component {
       }
     }
 
-    //The opt to adopt container - displays a random horse up for adoption
+    /**
+     * @description The opt to adopt container - displays a random horse up for adoption
+     */
     return (
       <div className="rand-horse-wrapper">
         <div className="rand-horse-container">
           {randHorse &&
             randHorse.name && (
-              <div className="adopt-heading">
-                <h3>OPT TO ADOPT</h3>
-                <h4>{randHorse.name.$t}</h4>
+              <div aria-labelledby="opt-heading" className="adopt-heading">
+                <h3 id="opt-heading" aria-describedby="rand-name">OPT TO ADOPT</h3>
+                <h4 id="rand-name" aria-labelledby="opt-heading">{randHorse.name.$t}</h4>
               </div>
             )}
 
-          <div className="horse-finder-image-container">
+          <div aria-describedby="rand-name" aria-labelledby="opt-heading" className="horse-finder-image-container">
             {horseImage && (
               <img alt="PetFinder horse for adoption" src={horseImage} />
             )}
@@ -86,34 +107,27 @@ class PetFinderHorse extends Component {
               )}
           </div>
 
-          <div className="description-container">
-            {description &&
-                <p>{description}</p>}
+          <div aria-describedby="description" className="description-container">
+            {description && <p id="description">{description}</p>}
           </div>
 
           <div className="contact-container">
             {randHorse &&
               randHorse.contact &&
-              randHorse.contact.phone.$t && (
-                <p>{randHorse.contact.phone.$t}</p>
-              )}
+              randHorse.contact.phone.$t && <p aria-label="contact info">{randHorse.contact.phone.$t}</p>}
 
             {randHorse &&
               randHorse.contact &&
-              randHorse.contact.email.$t && (
-                <p>{randHorse.contact.email.$t}</p>
-              )}
+              randHorse.contact.email.$t && <p aria-label="contact info">{randHorse.contact.email.$t}</p>}
 
             {randHorse &&
               randHorse.contact &&
               randHorse.contact.city.$t &&
               randHorse.contact.state.$t && (
-                <p>
-                  {randHorse.contact.city.$t},{" "}
-                  {randHorse.contact.state.$t}
+                <p aria-label="contact info">
+                  {randHorse.contact.city.$t}, {randHorse.contact.state.$t}
                 </p>
               )}
-
           </div>
         </div>
       </div>

@@ -103,13 +103,13 @@ class Search extends Component {
               this.handleFilterChange(event.target.value);
             }}
           >
-            <option value="horseriding">Horse Riding</option>
-            <option value="horse_board">Horse Boarding</option>
-            <option value="horseracing">Horse Racing</option>
-            <option value="horsequipment">Horse Equipment</option>
-            <option value="petphotography">Pet Photography</option>
-            <option value="farriers">Farrier</option>
-            <option value="vets">Veterinarian</option>
+            <option tabIndex="-1" value="horseriding">Horse Riding</option>
+            <option tabIndex="-1" value="horse_board">Horse Boarding</option>
+            <option tabIndex="-1" value="horseracing">Horse Racing</option>
+            <option tabIndex="-1"  value="horsequipment">Horse Equipment</option>
+            <option tabIndex="-1" value="petphotography">Pet Photography</option>
+            <option tabIndex="-1" value="farriers">Farrier</option>
+            <option tabIndex="-1" value="vets">Veterinarian</option>
           </select>
         </div>
 

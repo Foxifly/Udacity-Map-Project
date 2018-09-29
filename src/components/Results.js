@@ -23,9 +23,9 @@ class Results extends Component {
     const { results, handleCurrBusiness, isYelpError} = this.props;
     //Displays the result grid
     return (
-      <div className="results">
-        <h3> Results</h3>
-        <div className="result-container">
+      <div aria-labelledby="result-container" className="results">
+        <h3 aria-describedby="result-info" id="result-header"> Results</h3>
+        <div id="result-info" className="result-container">
           <ol className="result-grid">
             {!results && <p>Loading Results...</p>}
 
