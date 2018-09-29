@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 class Search extends Component {
 
-  //needed to bind these functions or else this will be undefined.
+  /**
+   * @description needed to bind these functions or else this will be undefined in the click event.
+   */
   constructor(props) {
     super(props);
     this.state = { value: "", filter: "", topic: "horse_riding" };
@@ -12,7 +14,9 @@ class Search extends Component {
     this.handleBoolChange = this.handleBoolChange.bind(this);
   }
 
-  //When "Search" is clicked, search the location with the searchLocation function props.
+  /**
+   * @description When "Search" is clicked, search the location with the searchLocation function props.
+   */
   handleSubmit = event => {
     console.log(this.state);
     event.preventDefault();
@@ -24,7 +28,9 @@ class Search extends Component {
         this.state.topic
       );
 
-      //if the select box hasn't been changed, search with the filter horseriding by default.
+      /**
+       * @description if the select box hasn't been changed, search with the filter horseriding by default.
+       */
     } else if (this.state.value) {
       console.log(this.state);
       this.setState({ filter: "horseriding" });
@@ -35,7 +41,9 @@ class Search extends Component {
       );
     }
 
-    //If there isn't a location entered by the option menu changed, search by the currently loaded location
+    /**
+     * @description If there isn't a location entered by the option menu changed, search by the currently loaded location
+     */
     if (!this.state.value) {
       this.props.searchCurrentLocation(
         this.state.value,
@@ -45,14 +53,16 @@ class Search extends Component {
     }
   };
 
-  //set the state of the value when the search text is changed.
+  /**
+   * @description set the state of the value when the search text is changed.
+   */
   handleTermChange(event) {
     this.setState({ value: event.target.value });
   }
 
-
-
-  // assign a search query for the yelp api call.
+  /**
+   * @description Assign a search query for the yelp api call.
+   */
   handleFilterChange(selection) {
     this.setState({ filter: selection }, function(c) {
       selection === "horseriding"
@@ -73,11 +83,16 @@ class Search extends Component {
     });
   }
 
+  /**
+   * @description Keeps track of when the "close" button is clicked on the error modal.
+   */
   handleBoolChange(){
     this.props.updateBool("location")
   }
 
-//Loads the search bar.
+/**
+ * @description Loads the search bar.
+ */
   render() {
   const {isLocationError} = this.props;
     return (

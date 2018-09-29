@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+
+/**
+ * @description Watches for errors in the children components.
+ */
 class ErrorHandle extends Component {
   constructor(props) {
     super(props);
@@ -22,8 +26,7 @@ class ErrorHandle extends Component {
       return (
       <div aria-hidden={!this.state.hasError} className="location-modal">
       <div aria-labelledby="error" aria-describedby="invalid-input" className="location-modal-content"><h3 id="error">ERROR</h3>
-      <p id="invalid-input" className="invalid-input">{`There was an error loading ${whereError}. Please try again later.`}</p>
-      <button className="invalid-input-button" onClick={this.handleBoolChange}>Close</button>
+      <p id="invalid-input" className="invalid-input">{`There was an error loading ${whereError}. Please reload the page or try again later.`}</p>
       </div></div>
     );
     }

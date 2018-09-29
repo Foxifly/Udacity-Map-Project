@@ -9,7 +9,6 @@ import ErrorHandle from "./ErrorHandle";
  * @description //This component will display on a specific business screen. (once one is selected)
  * @returns {HTML} Returns the info page for the result component
  */
-
 class ResultPage extends Component {
   static propTypes = {
     results: PropTypes.array.isRequired,
@@ -17,6 +16,10 @@ class ResultPage extends Component {
     longitude: PropTypes.number.isRequired
   };
 
+  /**
+   * @description Renders the ResutFocus and Result components. 
+   * @returns {HTML} Returns the info page for the result component
+   */
   render () {
       const { results, resultClicked, handleCurrBusiness, isYelpError, updateYelpBool} = this.props;
   return (

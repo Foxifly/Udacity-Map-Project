@@ -2,19 +2,25 @@ import React, { Component } from "react";
 import Business from "./Business";
 import PropTypes from "prop-types";
 
+/**
+ * @description displays all of the results from a search.
+ */
 class Results extends Component {
   constructor(props) {
     super(props);
     this.handleBoolChange = this.handleBoolChange.bind(this);
   }
-  //Only prop required here is the result array.
+
+  /**
+   * @description Declaring the required props for this component.
+   */
   static propTypes = {
     results: PropTypes.array.isRequired
   };
 
-
-
-
+  /**
+   * @description When "close" is clicked on the modal, close the modal.
+   */
   handleBoolChange(){
     this.props.updateBool("yelp")
   }
