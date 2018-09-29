@@ -31,6 +31,7 @@ class App extends Component {
     this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
     this.handleCurrBusiness = this.handleCurrBusiness.bind(this);
     this.updateBool = this.updateBool.bind(this);
+    this.filterUpdateResults = this.filterUpdateResults.bind(this);
   }
 
   /**
@@ -205,6 +206,12 @@ class App extends Component {
     }
   }
 
+    filterUpdateResults(results) {
+      this.setState({
+        results
+      })
+    }
+
   /**
    * @description The rendering of all the components and routes: Base, MainPage, ResultPage and Footer.
    */
@@ -230,6 +237,7 @@ class App extends Component {
               <div aria-labelledby="main-header">
                     {
                       <MainPage
+                        filterUpdateResults={this.filterUpdateResults}
                         isYelpError={this.state.isYelpError}
                         updateBool={this.updateBool}
                         searchLocation={this.searchLocation}

@@ -3,6 +3,7 @@ import Results from "./Results";
 import PetFinderHorse from "./PetFinderHorse";
 import PropTypes from "prop-types";
 import ErrorHandle from "./ErrorHandle";
+import NameFilter from "./NameFilter";
 
 /**
  * @description The main page component pulls in all the components to display them together on App.js.
@@ -28,17 +29,27 @@ class MainPage extends Component {
       randHorse,
       handleCurrBusiness,
       isYelpError,
-      updateBool
+      updateBool,
+      filterUpdateResults
     } = this.props;
 
     return (
       <div aria-labelledby="result-header" aria-describedby="result-info">
+      <ErrorHandle
+      whereError="Name Filter"
+      >
+      <NameFilter
+      results={results}
+      filterUpdateResults={filterUpdateResults}
+      />
+      </ErrorHandle>
         <Results
           results={results}
           handleCurrBusiness={handleCurrBusiness}
           isYelpError={isYelpError}
           updateBool={updateBool}
         />
+
 
         <ErrorHandle whereError="PetFinder">
           <PetFinderHorse randHorse={randHorse} />

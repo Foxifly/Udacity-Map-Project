@@ -20,8 +20,9 @@ class Base extends Component {
     searchCurrentLocation: PropTypes.func.isRequired,
     isLocationError: PropTypes.bool.isRequired,
     updateBool: PropTypes.func.isRequired,
-    currClickedID: PropTypes.string,
+    currClickedID: PropTypes.string
   };
+
 
   /**
    * @description The render method of this component renders the main heading and footer, the search bar, the map, the results, and the petfinder horse. All of these sub-components stay consistent throughout all routes.
