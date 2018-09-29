@@ -12,6 +12,10 @@ class NameFilter extends Component {
     this.handleTermChange = this.handleTermChange.bind(this);
   }
 
+  /**
+   * @description Waits for the props of the component to update, when it updates, then set the state.
+   * @param nextProps The next props taht are passed when the component updates.
+   */
   componentWillUpdate(nextProps) {
     if (this.state.filtered) {
       if (nextProps.results !== this.props.results) {
@@ -29,7 +33,7 @@ class NameFilter extends Component {
   }
 
   /**
-   * @description When "Search" is clicked, search the location with the searchLocation function props.
+   * @description The filter function for the names of the horse locations.
    */
   handleTermChange(event) {
     this.setState({ value: event.target.value });
@@ -54,7 +58,7 @@ class NameFilter extends Component {
   }
 
 /**
- * @description Loads the search bar.
+ * @description Loads the Name filter bar. 
  */
   render() {
     return (
