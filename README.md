@@ -1,6 +1,5 @@
 # Spur of the Moment
 ### Lindsay Ciastko, 9/28/18
-=============
 
 # Introduction
 Part of the final project for Udacity's Front End Development Course, Spur of the Moment is an accessibility-friendly application built with the React.js framework. Spur of the Moment was brought to life using Google Maps, Yelp, and more to create a fully functioning web application. Using this application, users are able to search locations for various horse-related locations. For example, if a user is looking for a farrier to take care of their horses's horseshoes, Spur of the Moment will make it easy for them to locate one near them.
@@ -13,7 +12,7 @@ Due to the billing information being on google, I have removed my personal Googl
 
 For the sake of space, the `node_modules` folder was not included in this repository. To install all dependencies, please run `npm install`. This app was bundled with `create-react-app`; therefore, once it is done installing the dependencies, `npm start` will launch the application onto `localhost:3000`.
 
-# Featres and Usage
+# Features and Usage
 Users of this application can use it to search for a specific location and filter this search by horse riding, horse boarding, horse racing, farrier, and vet. Clicking on more info, displays yelp information about each location and you can view where on the map this particular venue is located. On the main page, the user can view a random horse for adoption along with the contact information of the owner.
 
 
