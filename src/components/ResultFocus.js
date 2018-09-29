@@ -27,7 +27,6 @@ class ResultFocus extends Component {
    */
   render() {
     const { resultClicked } = this.props;
-    
     let url;
     if (resultClicked.image_url) {
       url = resultClicked.image_url;

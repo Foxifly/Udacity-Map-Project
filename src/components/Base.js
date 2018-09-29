@@ -3,6 +3,7 @@ import Map from "./Map";
 import MainHeading from "./MainHeading";
 import Search from "./Search";
 import PropTypes from "prop-types";
+import ErrorHandle from "./ErrorHandle";
 
 /**
  * @description The main page component pulls in all main the components to display them together on App.js. These components are the same between all routes.
@@ -43,19 +44,27 @@ class Base extends Component {
 
         <MainHeading />
 
+        <ErrorHandle
+        whereError="your search"
+        >
         <Search
           searchLocation={searchLocation}
           searchCurrentLocation={searchCurrentLocation}
           isLocationError={isLocationError}
           updateBool={updateBool}
         />
+        </ErrorHandle>
 
+        <ErrorHandle
+        whereError="the Map"
+        >
         <Map
           currClickedID={currClickedID}
           results={results}
           latitude={latitude}
           longitude={longitude}
         />
+        </ErrorHandle>
 
       </div>
     );

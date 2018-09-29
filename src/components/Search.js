@@ -81,10 +81,10 @@ class Search extends Component {
     return (
       <div>
       {isLocationError &&
-      <div className="location-modal">
-      <div className="location-modal-content"><h3>ERROR</h3>
-      <p className="invalid-input"> You have entered an invalid location. Please try again using a differen location.</p>
-      <button className="invalid-input-button" onClick={this.handleBoolChange}> Close</button>
+      <div aria-hidden={isLocationError} className="location-modal">
+      <div aria-labelledby="error" aria-describedby="invalid-input" className="location-modal-content"><h3 id="error">ERROR</h3>
+      <p id="invalid-input" className="invalid-input">{"You have entered an invalid location. Please try again using a differen location."}</p>
+      <button className="invalid-input-button" onClick={this.handleBoolChange}>Close</button>
       </div></div>
     }
       <form onSubmit={this.handleSubmit} className="search-container">
@@ -93,11 +93,13 @@ class Search extends Component {
             onChange={this.handleTermChange}
             type="text"
             placeholder="Enter Location"
+            aria-label="location"
           />
         </div>
 
         <div className="filter-options">
           <select
+            aria-label="search topic"
             value={this.state.filter}
             onChange={event => {
               this.handleFilterChange(event.target.value);

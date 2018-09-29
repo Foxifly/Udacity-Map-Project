@@ -3,8 +3,13 @@ import Results from "./Results";
 import ResultFocus from "./ResultFocus";
 import PropTypes from 'prop-types';
 import BackButton from "./BackButton";
+import ErrorHandle from "./ErrorHandle";
 
-//This component will display on a specific business screen. (once one is selected)
+/**
+ * @description //This component will display on a specific business screen. (once one is selected)
+ * @returns {HTML} Returns the info page for the result component
+ */
+
 class ResultPage extends Component {
   static propTypes = {
     results: PropTypes.array.isRequired,
@@ -20,9 +25,13 @@ class ResultPage extends Component {
 
     <BackButton/>
 
-    <ResultFocus
-    resultClicked={resultClicked}
-    />
+    <ErrorHandle
+    whereError="this result"
+    >
+      <ResultFocus
+        resultClicked={resultClicked}
+      />
+    </ErrorHandle>
 
     <Results
     isYelpError={isYelpError}
@@ -30,7 +39,7 @@ class ResultPage extends Component {
     handleCurrBusiness={handleCurrBusiness}
     results={results}
     />
-    
+
     </div>
 
   )
