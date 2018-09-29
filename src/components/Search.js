@@ -5,7 +5,7 @@ class Search extends Component {
   //needed to bind these functions or else this will be undefined.
   constructor(props) {
     super(props);
-    this.state = { value: "", filter: "", topic: "" };
+    this.state = { value: "", filter: "", topic: "horse_riding" };
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -14,6 +14,7 @@ class Search extends Component {
 
   //When "Search" is clicked, search the location with the searchLocation function props.
   handleSubmit = event => {
+    console.log(this.state);
     event.preventDefault();
     console.log(this.state);
     if (this.state.filter && this.state.value) {
@@ -25,6 +26,7 @@ class Search extends Component {
 
       //if the select box hasn't been changed, search with the filter horseriding by default.
     } else if (this.state.value) {
+      console.log(this.state);
       this.setState({ filter: "horseriding" });
       this.props.searchLocation(
         this.state.value,
