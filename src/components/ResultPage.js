@@ -17,16 +17,20 @@ class ResultPage extends Component {
   return (
 
     <div>
+
     <BackButton/>
+
     <ResultFocus
     resultClicked={resultClicked}
     />
+
     <Results
     isYelpError={isYelpError}
     updateYelpBool={updateYelpBool}
     handleCurrBusiness={handleCurrBusiness}
     results={results}
     />
+    
     </div>
 
   )
