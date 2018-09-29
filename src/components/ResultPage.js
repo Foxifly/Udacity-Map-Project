@@ -13,16 +13,18 @@ class ResultPage extends Component {
   };
 
   render () {
-      const { results, resultClicked, handleCurrBusiness} = this.props;
+      const { results, resultClicked, handleCurrBusiness, isYelpError, updateYelpBool} = this.props;
   return (
     <div className="app">
     <BackButton/>
-    <Results
-    handleCurrBusiness={handleCurrBusiness}
-    results={results}
-    />
     <ResultFocus
     resultClicked={resultClicked}
+    />
+    <Results
+    isYelpError={isYelpError}
+    updateYelpBool={updateYelpBool}
+    handleCurrBusiness={handleCurrBusiness}
+    results={results}
     />
     </div>
 

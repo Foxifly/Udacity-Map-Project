@@ -17,11 +17,14 @@ class MainPage extends Component {
     const {
       results,
       randHorse,
-      handleCurrBusiness
+      handleCurrBusiness,
+      isYelpError,
+      updateYelpBool
     } = this.props;
     return (
       <div className="app">
-        <Results results={results} handleCurrBusiness={handleCurrBusiness} />
+        <Results results={results} handleCurrBusiness={handleCurrBusiness}  isYelpError={isYelpError}
+            updateYelpBool={updateYelpBool} />
 
         <PetFinderHorse randHorse={randHorse} />
       </div>

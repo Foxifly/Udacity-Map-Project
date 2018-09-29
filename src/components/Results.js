@@ -9,7 +9,7 @@ class Results extends Component {
   };
 
   render() {
-    const { results, handleCurrBusiness} = this.props;
+    const { results, handleCurrBusiness, updateYelpBool, isYelpError} = this.props;
     //Displays the result grid
     return (
       <div className="results">
@@ -18,9 +18,14 @@ class Results extends Component {
           <ol className="result-grid">
             {!results && <p>Loading Results...</p>}
 
-            {results === "Error" && (
-              <p> Could not fetch Yelp API. Please try again later.</p>
-            )}
+            {isYelpError &&
+              <div className="location-modal">
+              <div className="location-modal-content"><h3>ERROR</h3>
+              <p className="invalid-input">We are having trouble accessing the Yelp API. Please try again later.</p>
+              <button className="invalid-input-button" onClick={updateYelpBool}> Close</button>
+              </div></div>
+            }
+
             {results &&
               results !== "Error" &&
               results.map(result => {
