@@ -9,7 +9,8 @@ class MainPage extends Component {
   static propTypes = {
     results: PropTypes.array.isRequired,
     randHorse: PropTypes.object.isRequired,
-    handleCurrBusiness: PropTypes.func.isRequired
+    handleCurrBusiness: PropTypes.func.isRequired,
+    updateBool: PropTypes.func.isRequired
   };
 
   //The render method renders the main heading and footer, the search bar, the map, the results, and the petfinder horse.
@@ -19,12 +20,12 @@ class MainPage extends Component {
       randHorse,
       handleCurrBusiness,
       isYelpError,
-      updateYelpBool
+      updateBool
     } = this.props;
     return (
       <div className="app">
         <Results results={results} handleCurrBusiness={handleCurrBusiness}  isYelpError={isYelpError}
-            updateYelpBool={updateYelpBool} />
+            updateBool={updateBool} />
 
         <PetFinderHorse randHorse={randHorse} />
       </div>

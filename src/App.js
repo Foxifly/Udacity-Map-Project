@@ -29,8 +29,7 @@ class App extends Component {
     this.searchLocation = this.searchLocation.bind(this);
     this.searchCurrentLocation = this.searchCurrentLocation.bind(this);
     this.handleCurrBusiness = this.handleCurrBusiness.bind(this);
-    this.updateLocationBool = this.updateLocationBool.bind(this);
-    this.updateYelpBool = this.updateYelpBool.bind(this);
+    this.updateBool = this.updateBool.bind(this);
   }
 
   /**
@@ -166,17 +165,23 @@ class App extends Component {
    * @description Negates the state of isLocationError, isYelpError to make the modal close.
    * TODO: Edit this to take an arg and combine this with yelpBool.
    */
-  updateLocationBool() {
-    this.setState({
-      isLocationError: false
-    });
+  updateBool(boolType) {
+    switch (boolType) {
+      case "location":
+      this.setState({
+        isLocationError: false
+      });
+        break;
+      case "yelp":
+      this.setState({
+        isYelpError: false
+      });
+      break;
+      default:
+      break;
+    }
   }
 
-  updateYelpBool() {
-    this.setState({
-      isYelpError: false
-    });
-  }
 
 
   /**
@@ -188,7 +193,7 @@ class App extends Component {
         <Base
           currClickedID={this.state.currClickedID}
           isLocationError={this.state.isLocationError}
-          updateLocationBool={this.updateLocationBool}
+          updateBool={this.updateBool}
           searchLocation={this.searchLocation}
           searchCurrentLocation={this.searchCurrentLocation}
           results={this.state.results}
@@ -201,13 +206,11 @@ class App extends Component {
           path="/"
           render={() => {
             return (
-              <div>
-                {this.state.results && (
-                  <div>
+              <div aria-labelledby="main-header">
                     {
                       <MainPage
                         isYelpError={this.state.isYelpError}
-                        updateYelpBool={this.updateYelpBool}
+                        updateBool={this.updateBool}
                         searchLocation={this.searchLocation}
                         searchCurrentLocation={this.searchCurrentLocation}
                         randHorse={this.state.randHorse}
@@ -218,8 +221,6 @@ class App extends Component {
                       />
                     }
                   </div>
-                )}
-              </div>
             );
           }}
         />
@@ -228,7 +229,7 @@ class App extends Component {
           path="/info"
           render={({ history }) => {
             return (
-              <div>
+              <div aria-labelledby="main-header">
                 <ResultPage
                   isYelpError={this.state.isYelpError}
                   updateYelpBool={this.updateYelpBool}

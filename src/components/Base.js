@@ -24,7 +24,7 @@ class Base extends Component {
       searchLocation,
       searchCurrentLocation,
       isLocationError,
-      updateLocationBool,
+      updateBool,
       currClickedID
     } = this.props;
     return (
@@ -36,7 +36,7 @@ class Base extends Component {
           searchLocation={searchLocation}
           searchCurrentLocation={searchCurrentLocation}
           isLocationError={isLocationError}
-          updateLocationBool={updateLocationBool}
+          updateBool={updateBool}
         />
 
         <Map currClickedID={currClickedID} results={results} latitude={latitude} longitude={longitude} />

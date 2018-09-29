@@ -9,6 +9,7 @@ class Search extends Component {
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleBoolChange = this.handleBoolChange.bind(this);
   }
 
   //When "Search" is clicked, search the location with the searchLocation function props.
@@ -70,16 +71,20 @@ class Search extends Component {
     });
   }
 
+  handleBoolChange(){
+    this.props.updateBool("location")
+  }
+
 //Loads the search bar.
   render() {
-  const {isLocationError, updateLocationBool} = this.props;
+  const {isLocationError} = this.props;
     return (
       <div>
       {isLocationError &&
       <div className="location-modal">
       <div className="location-modal-content"><h3>ERROR</h3>
       <p className="invalid-input"> You have entered an invalid location. Please try again using a differen location.</p>
-      <button className="invalid-input-button" onClick={updateLocationBool}> Close</button>
+      <button className="invalid-input-button" onClick={this.handleBoolChange}> Close</button>
       </div></div>
     }
       <form onSubmit={this.handleSubmit} className="search-container">

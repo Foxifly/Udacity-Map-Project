@@ -3,13 +3,24 @@ import Business from "./Business";
 import PropTypes from "prop-types";
 
 class Results extends Component {
+  constructor(props) {
+    super(props);
+    this.handleBoolChange = this.handleBoolChange.bind(this);
+  }
   //Only prop required here is the result array.
   static propTypes = {
     results: PropTypes.array.isRequired
   };
 
+
+
+
+  handleBoolChange(){
+    this.props.updateBool("yelp")
+  }
+
   render() {
-    const { results, handleCurrBusiness, updateYelpBool, isYelpError} = this.props;
+    const { results, handleCurrBusiness, isYelpError} = this.props;
     //Displays the result grid
     return (
       <div className="results">
@@ -22,7 +33,7 @@ class Results extends Component {
               <div className="location-modal">
               <div className="location-modal-content"><h3>ERROR</h3>
               <p className="invalid-input">We are having trouble accessing the Yelp API. Please try again later.</p>
-              <button className="invalid-input-button" onClick={updateYelpBool}> Close</button>
+              <button className="invalid-input-button" onClick={this.handleBoolChange}> Close</button>
               </div></div>
             }
 
