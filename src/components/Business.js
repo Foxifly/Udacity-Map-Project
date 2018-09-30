@@ -51,7 +51,8 @@ class Business extends Component {
       <li aria-labelledby="business-name" className="business">
         <h4 aria-describedby="business-info" id="business-name"> {business.name}</h4>
 
-        <div role="figure" aria-label={business.name} aria-describedby={business.name}
+        <div role="figure" aria-label={business.name} aria-describedby={business.name} aria-labelledby={business.name}
+          alt={business.name}
           className="bus-image-container"
           style={{
             width: 200,

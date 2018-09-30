@@ -21,7 +21,7 @@ const GMap = compose(
   withScriptjs,
   withGoogleMap
 
-)(props => (
+)((props) => (
 
   <GoogleMap
     defaultZoom={9}
@@ -56,12 +56,18 @@ const GMap = compose(
  * @description The map component that passes the state into the gMap component to display the map at the user's location.
  */
 class Map extends Component {
-  state = {
-    latitude: 30,
-    longitude: -30,
-    results: [],
-    currClickedID: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      latitude: 30,
+      longitude: -30,
+      results: [],
+      currClickedID: null,
+      isAPIError: false,
+    };
+    this.closeModal = this.closeModal.bind(this);
+
+  }
 
   /**
    * @description Waits for the component to mount, then sets the state of the latitude and longitude
@@ -72,6 +78,22 @@ class Map extends Component {
       longitude: this.props.longitude,
       currClickedID: this.props.currClickedID
     });
+
+    window.gm_authFailure = () => {
+      this.setState({isAPIError: true})
+    };
+  }
+
+  closeModal() {
+    this.setState({
+      isAPIError: false
+    })
+  }
+
+  componentDidCatch() {
+    this.setState({
+      isAPIError: true
+    })
   }
 
   /**
@@ -96,6 +118,16 @@ class Map extends Component {
   render() {
     return (
       <div role="application" aria-label="map">
+
+      {this.state.isAPIError &&
+      <div aria-hidden={!this.state.isAPIError} className="location-modal">
+      <div aria-labelledby="error" aria-describedby="invalid-input" className="location-modal-content"><h3 id="error">ERROR</h3>
+      <p id="invalid-input" className="invalid-input">{"The Google Maps API Key is either missing or invalid. Please contact the website's administrator for further assistance. "}</p>
+      <button autoFocus={true}  className="invalid-input-button" onClick={this.closeModal}>Close</button>
+      </div></div>
+    }
+
+
         <GMap
           results={this.state.results}
           latitude={this.state.latitude}

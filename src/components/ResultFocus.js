@@ -38,7 +38,7 @@ class ResultFocus extends Component {
       <div aria-labelledby="result-name" aria-describedby="result-text" className="result-featured">
         {resultClicked &&
           resultClicked.location && (
-            <div className="result-featured-container">
+            <div aria-labelledby={resultClicked.name} className="result-featured-container">
               <div className="result-featured-image">
                 <img
                   alt={resultClicked.name}
