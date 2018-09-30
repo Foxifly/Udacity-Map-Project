@@ -17,7 +17,7 @@ class ResultPage extends Component {
   };
 
   /**
-   * @description Renders the ResutFocus and Result components. 
+   * @description Renders the ResutFocus and Result components.
    * @returns {HTML} Returns the info page for the result component
    */
   render () {
@@ -36,12 +36,16 @@ class ResultPage extends Component {
       />
     </ErrorHandle>
 
+    <ErrorHandle
+    whereError="loading Yelp"
+    >
     <Results
     isYelpError={isYelpError}
     updateYelpBool={updateYelpBool}
     handleCurrBusiness={handleCurrBusiness}
     results={results}
     />
+    </ErrorHandle>
 
     </div>
 

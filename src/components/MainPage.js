@@ -43,18 +43,34 @@ class MainPage extends Component {
       filterUpdateResults={filterUpdateResults}
       />
       </ErrorHandle>
+
+      <ErrorHandle
+      whereError="loading Yelp"
+      >
         <Results
           results={results}
           handleCurrBusiness={handleCurrBusiness}
           isYelpError={isYelpError}
           updateBool={updateBool}
         />
+        </ErrorHandle>
 
 
         <ErrorHandle whereError="PetFinder">
           <PetFinderHorse randHorse={randHorse} />
         </ErrorHandle>
+
+        {!results &&
+          <div className="location-modal">
+          <div className="location-modal-content"><h3>ERROR</h3>
+          <p className="invalid-input">There has been a fatal error while trying to access the Yelp API. Please either refresh the page or try again later.</p>
+          <br/>
+          </div></div>
+        }
+
       </div>
+
+
     );
   }
 }

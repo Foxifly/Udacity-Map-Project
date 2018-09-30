@@ -25,6 +25,11 @@ class Results extends Component {
     this.props.updateBool("yelp")
   }
 
+
+
+
+
+
   render() {
     const { results, handleCurrBusiness, isYelpError} = this.props;
     //Displays the result grid
@@ -33,8 +38,14 @@ class Results extends Component {
         <h3 aria-describedby="result-info" id="result-header"> Results</h3>
         <div id="result-info" className="result-container">
           <ol className="result-grid">
-            {!results && <p>Loading Results...</p>}
 
+          {!results &&
+            <div className="location-modal">
+            <div className="location-modal-content"><h3>ERROR</h3>
+            <p className="invalid-input">There has been a fatal error while trying to access the Yelp API. Please either refresh the page or try again later.</p>
+            <br/>
+            </div></div>
+          }
             {isYelpError &&
               <div className="location-modal">
               <div className="location-modal-content"><h3>ERROR</h3>
