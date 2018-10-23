@@ -231,7 +231,7 @@ class App extends Component {
 
         <Route
           exact
-          path="/"
+          path={process.env.PUBLIC_URL + '/'
           render={() => {
             return (
               <div aria-labelledby="main-header">
@@ -255,7 +255,7 @@ class App extends Component {
         />
 
         <Route
-          path="/info"
+        path={process.env.PUBLIC_URL + '/info'
           render={({ history }) => {
             return (
               <div aria-labelledby="main-header">
